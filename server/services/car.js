@@ -1,37 +1,37 @@
-const Car = require("../models/Car")
+const Coffee = require("../models/Coffee")
 const User = require("../models/User")
 require('dotenv').config()
-const addCar = async (car, id) => {
+const addCar = async (coffee, id) => {
     try {
-        car.owner = id;
-        return await Car.create({ ...car })
+        coffee.owner = id;
+        return await Coffee.create({ ...coffee })
     } catch (error) {
         console.log(error)
         throw new Error(error)
     }
 }
 const getAllCars = async () => {
-    return await Car.find({})
+    return await Coffee.find({})
 }
 const getOneCar = async (id) => {
-    return await Car.findById(id).populate('owner addedBy')
+    return await Coffee.findById(id).populate('owner addedBy')
 }
 const getProfileCars = async (_id) => {
-    return await Car.find({ owner: _id })
+    return await Coffee.find({ owner: _id })
 }
 const editCar = async (id, data) => {
     try {
-        return await Car.findByIdAndUpdate(id, { ...data }, { runValidators: true })
+        return await Coffee.findByIdAndUpdate(id, { ...data }, { runValidators: true })
     } catch (error) {
         throw new Error(error)
     }
 }
 const deleteACar = async (id) => {
-    return await Car.findByIdAndDelete(id)
+    return await Coffee.findByIdAndDelete(id)
 
 }
 const getTop3Cars = async () => {
-    const cars = await Car.find({}).sort({ price: -1 }).limit(3)
+    const cars = await Coffee.find({}).sort({ price: -1 }).limit(3)
     return cars
 }
 const addToFavourite = async (userId, carId) => {
@@ -44,10 +44,10 @@ const addToFavourite = async (userId, carId) => {
         console.log(carId)
         await User.findByIdAndUpdate(userId, {favouriteCars: array})
         //Adding user to car
-        let car = await Car.findById(carId)
+        let car = await Coffee.findById(carId)
         let carArray = car.addedBy
         carArray.push(userId)
-        await Car.findByIdAndUpdate(carId, {addedBy: carArray})
+        await Coffee.findByIdAndUpdate(carId, {addedBy: carArray})
     } catch (error) {
         throw new Error(error)
     }
@@ -64,11 +64,11 @@ const removeFromFavourites = async (userId, carId) => {
         userCarArray.splice(userIndex, 1)
         await User.findByIdAndUpdate(userId, {favouriteCars: userCarArray})
 
-        const car = await Car.findById(carId);
+        const car = await Coffee.findById(carId);
         let carUserArray = car.addedBy;
         let carUserIndex =carUserArray.indexOf(userId)
         carUserArray.splice(carUserIndex, 1)
-        await Car.findByIdAndUpdate(carId, {addedBy: carUserArray})
+        await Coffee.findByIdAndUpdate(carId, {addedBy: carUserArray})
     } catch (error) {
         throw new Error(error)
     }

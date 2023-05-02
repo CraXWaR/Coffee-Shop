@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const carSchema = new mongoose.Schema({
+const coffeeSchema = new mongoose.Schema({
     make: {
         //Mercedes-Benz
         required: true,
@@ -58,5 +58,5 @@ const carSchema = new mongoose.Schema({
     ]
 });
 
-const car = new mongoose.model('Car', carSchema);
-module.exports = car;
+const coffee = new mongoose.model('Coffee', coffeeSchema);
+module.exports = coffee;
