@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('dotenv').config()
 
 function initDatabase(){
-    return mongoose.connect(process.env.CONNECTIONSTRING);
+    return mongoose.connect('mongodb://0.0.0.0:27017/coffeeShop');
 }
 
 module.exports = initDatabase;  

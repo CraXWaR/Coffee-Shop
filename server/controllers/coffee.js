@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const cloudinary = require('cloudinary');
 const uploader = require("../services/multer");
-const { addCar, getAllCars, getOneCar, getProfileCars, editCar, deleteACar, getTop3Cars, addToFavourite, getFavouriteCars, removeFromFavourites } = require('../services/car');
+const { addCar, getAllCars, getOneCar, getProfileCars, editCar, deleteACar, getTop3Cars, addToFavourite, getFavouriteCars, removeFromFavourites } = require('../services/coffee');
 const { updateCarsOnUser } = require('../services/user');
 
 const router = require('express').Router();
