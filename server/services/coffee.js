@@ -43,12 +43,12 @@ const addToFavourite = async (userId, carId) => {
         array.push(carId);
         console.log(userId);
         console.log(carId);
-        await User.findByIdAndUpdate(userId, {favouriteCafes: array});
+        await User.findByIdAndUpdate(userId, { favouriteCafes: array });
         //Adding user to coffee
         let coffee = await Coffee.findById(carId);
         let coffeeArray = coffee.addedBy;
         coffeeArray.push(userId);
-        await Coffee.findByIdAndUpdate(carId, {addedBy: coffeeArray});
+        await Coffee.findByIdAndUpdate(carId, { addedBy: coffeeArray });
     } catch (error) {
         throw new Error(error);
     }
@@ -63,13 +63,13 @@ const removeFromFavourites = async (userId, carId) => {
         let userCoffeeArray = user.favouriteCafes
         let userIndex = userCoffeeArray.indexOf(carId);
         userCoffeeArray.splice(userIndex, 1)
-        await User.findByIdAndUpdate(userId, {favouriteCafes: userCoffeeArray})
+        await User.findByIdAndUpdate(userId, { favouriteCafes: userCoffeeArray })
 
         const car = await Coffee.findById(carId);
         let coffeeUserArray = car.addedBy;
-        let coffeeUserIndex =coffeeUserArray.indexOf(userId)
+        let coffeeUserIndex = coffeeUserArray.indexOf(userId)
         coffeeUserArray.splice(coffeeUserIndex, 1)
-        await Coffee.findByIdAndUpdate(carId, {addedBy: coffeeUserArray})
+        await Coffee.findByIdAndUpdate(carId, { addedBy: coffeeUserArray })
     } catch (error) {
         throw new Error(error)
     }
