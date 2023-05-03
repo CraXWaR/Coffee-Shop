@@ -5,8 +5,8 @@ const { addCoffee, getAllCafes, getOneCoffee, getProfileCafes, editCoffee, delet
 const { updateCafesOnUser } = require('../services/user');
 
 const router = require('express').Router();
-
-router.post('/', uploader.array('carPhotos'), async (req, res) => {
+// TODO AFTER /, uploader.array('carPhotos')
+router.post('/', async (req, res) => {
     const base64 = req.body.data.base64;
     const data = req.body.data;
     try {
@@ -23,9 +23,9 @@ router.post('/', uploader.array('carPhotos'), async (req, res) => {
         // }
         console.log(data)
         const userId = req?.user?._id;
-        const car = await addCoffee(data, userId)
-        await updateCafesOnUser(userId, car._id)
-        res.status(201).json(car)
+        const coffee = await addCoffee(data, userId)
+        await updateCafesOnUser(userId, coffee._id)
+        res.status(201).json(coffee)
     } catch (error) {
         console.log(error)
         res.status(400).json({ error: error.message })
