@@ -1,8 +1,8 @@
 const User = require('../models/User');
 // const cloudinary = require('cloudinary');
 // const uploader = require("../services/multer");
-const { addCar, getAllCars, getOneCar, getProfileCars, editCar, deleteACar, getTop3Cars, addToFavourite, getFavouriteCars, removeFromFavourites } = require('../services/coffee');
-const { updateCarsOnUser } = require('../services/user');
+const { addCoffee, getAllCafes, getOneCoffee, getProfileCafes, editCoffee, deleteCoffee, getTop3Cafes, addToFavourite, getFavouriteCafes, removeFromFavourites } = require('../services/coffee');
+const { updateCafesOnUser } = require('../services/user');
 
 const router = require('express').Router();
 
@@ -23,8 +23,8 @@ router.post('/', uploader.array('carPhotos'), async (req, res) => {
         // }
         console.log(data)
         const userId = req?.user?._id;
-        const car = await addCar(data, userId)
-        await updateCarsOnUser(userId, car._id)
+        const car = await addCoffee(data, userId)
+        await updateCafesOnUser(userId, car._id)
         res.status(201).json(car)
     } catch (error) {
         console.log(error)
@@ -33,17 +33,17 @@ router.post('/', uploader.array('carPhotos'), async (req, res) => {
     res.end()
 })
 router.get('/', async (req, res) => {
-    const cars = await getAllCars()
+    const cars = await getAllCafes()
     res.status(200).json(cars)
 })
 router.get('/mycars', async (req, res) => {
     const _id = req?.user?._id;
-    const cars = await getProfileCars(_id)
+    const cars = await getProfileCafes(_id)
     res.status(200).json(cars)
     res.end()
 })
 router.get('/most', async (req, res) => {
-    const cars = await getTop3Cars()
+    const cars = await getTop3Cafes()
     res.status(200).json(cars)
 })
 router.delete('/favourites/:id', async (req, res) => {
@@ -69,7 +69,7 @@ router.get('/favourites/:id', async (req, res) => {
 router.get('/favourite-cars', async (req, res) => {
     let userId = req.user._id
     try {
-        let cars = await getFavouriteCars(userId)
+        let cars = await getFavouriteCafes(userId)
         res.status(200).json(cars?.favouriteCars)
     } catch (error) {
         console.log(error)
@@ -79,7 +79,7 @@ router.get('/favourite-cars', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         let id = req.params.id;
-        const car = await getOneCar(id);
+        const car = await getOneCoffee(id);
         if (car) {
             res.status(200).json(car)
         } else {
@@ -98,10 +98,10 @@ router.put('/:id', async (req, res) => {
     // const base64 = req.body.base64;
     const data = req.body;
 
-    const car = await getOneCar(id)
+    const coffee = await getOneCoffee(id)
     try {
         data.carImages = []
-        if (req?.user._id == car.owner._id) {
+        if (req?.user._id == coffee.owner._id) {
             // if (base64) {
             //     for (let el of base64) {
             //         const uploaded = await cloudinary.v2.uploader.upload(el, { fetch_format: "auto" });
@@ -114,9 +114,9 @@ router.put('/:id', async (req, res) => {
             // }else {
             //     data.carImages.push(data.imageUrl)
             // }
-            await editCar(id, data)
-            const updatedCar = await getOneCar(id)
-            res.status(200).json(updatedCar)
+            await editCoffee(id, data)
+            const updatedCoffee = await getOneCoffee(id)
+            res.status(200).json(updatedCoffee)
         } else {
             throw new Error('You are not the owner!')
         }
@@ -129,11 +129,11 @@ router.delete('/:id', async (req, res) => {
     const user = await User.findById(req.user._id)
     const id = req.params.id;
     if (user.cars.includes(id)) {
-        let carsArray = user.cars;
-        let deletionIndex = carsArray.indexOf(id)
-        carsArray.splice(deletionIndex, 1)
-        await User.findByIdAndUpdate(req.user._id, { cars: carsArray })
-        let car = await deleteACar(id)
+        let cafesArray = user.cafes;
+        let deletionIndex = cafesArray.indexOf(id)
+        cafesArray.splice(deletionIndex, 1)
+        await User.findByIdAndUpdate(req.user._id, { cafes: cafesArray })
+        let coffee = await deleteCoffee(id)
         // if (car.imageId) {
         //     await cloudinary.v2.uploader.destroy(car.imageId)
         // }
