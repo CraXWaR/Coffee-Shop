@@ -1,7 +1,8 @@
-const Coffee = require("../models/Coffee")
-const User = require("../models/User")
+const Coffee = require("../models/Coffee");
+const User = require("../models/User");
+
 require('dotenv').config()
-const addCar = async (coffee, id) => {
+const addCoffee = async (coffee, id) => {
     try {
         coffee.owner = id;
         return await Coffee.create({ ...coffee })
@@ -10,65 +11,65 @@ const addCar = async (coffee, id) => {
         throw new Error(error)
     }
 }
-const getAllCars = async () => {
+const getAllCafes = async () => {
     return await Coffee.find({})
 }
-const getOneCar = async (id) => {
+const getOneCoffee = async (id) => {
     return await Coffee.findById(id).populate('owner addedBy')
 }
-const getProfileCars = async (_id) => {
+const getProfileCafes = async (_id) => {
     return await Coffee.find({ owner: _id })
 }
-const editCar = async (id, data) => {
+const editCoffee = async (id, data) => {
     try {
         return await Coffee.findByIdAndUpdate(id, { ...data }, { runValidators: true })
     } catch (error) {
         throw new Error(error)
     }
 }
-const deleteACar = async (id) => {
+const deleteCoffee = async (id) => {
     return await Coffee.findByIdAndDelete(id)
 
 }
-const getTop3Cars = async () => {
-    const cars = await Coffee.find({}).sort({ price: -1 }).limit(3)
-    return cars
+const getTop3Cafes = async () => {
+    const cafes = await Coffee.find({}).sort({ price: -1 }).limit(3)
+    return cafes
 }
 const addToFavourite = async (userId, carId) => {
     try {
-        //Adding car to user
-        const user = await User.findById(userId)
-        let array = user.favouriteCars;
-        array.push(carId)
-        console.log(userId)
-        console.log(carId)
-        await User.findByIdAndUpdate(userId, {favouriteCars: array})
-        //Adding user to car
-        let car = await Coffee.findById(carId)
-        let carArray = car.addedBy
-        carArray.push(userId)
-        await Coffee.findByIdAndUpdate(carId, {addedBy: carArray})
+        //Adding coffee to user
+        const user = await User.findById(userId);
+        let array = user.favouriteCafes;
+        array.push(carId);
+        console.log(userId);
+        console.log(carId);
+        await User.findByIdAndUpdate(userId, {favouriteCafes: array});
+        //Adding user to coffee
+        let coffee = await Coffee.findById(carId);
+        let coffeeArray = coffee.addedBy;
+        coffeeArray.push(userId);
+        await Coffee.findByIdAndUpdate(carId, {addedBy: coffeeArray});
     } catch (error) {
-        throw new Error(error)
+        throw new Error(error);
     }
 
 }
-const getFavouriteCars = async (userId) => {
-    return await User.findById(userId).populate('favouriteCars')
+const getFavouriteCafes = async (userId) => {
+    return await User.findById(userId).populate('favouriteCafes')
 }
 const removeFromFavourites = async (userId, carId) => {
     try {
         const user = await User.findById(userId);
-        let userCarArray = user.favouriteCars
-        let userIndex = userCarArray.indexOf(carId);
-        userCarArray.splice(userIndex, 1)
-        await User.findByIdAndUpdate(userId, {favouriteCars: userCarArray})
+        let userCoffeeArray = user.favouriteCafes
+        let userIndex = userCoffeeArray.indexOf(carId);
+        userCoffeeArray.splice(userIndex, 1)
+        await User.findByIdAndUpdate(userId, {favouriteCafes: userCoffeeArray})
 
         const car = await Coffee.findById(carId);
-        let carUserArray = car.addedBy;
-        let carUserIndex =carUserArray.indexOf(userId)
-        carUserArray.splice(carUserIndex, 1)
-        await Coffee.findByIdAndUpdate(carId, {addedBy: carUserArray})
+        let coffeeUserArray = car.addedBy;
+        let coffeeUserIndex =coffeeUserArray.indexOf(userId)
+        coffeeUserArray.splice(coffeeUserIndex, 1)
+        await Coffee.findByIdAndUpdate(carId, {addedBy: coffeeUserArray})
     } catch (error) {
         throw new Error(error)
     }
@@ -76,13 +77,13 @@ const removeFromFavourites = async (userId, carId) => {
 
 module.exports = {
     removeFromFavourites,
-    getFavouriteCars,
+    getFavouriteCafes,
     addToFavourite,
-    getTop3Cars,
-    deleteACar,
-    editCar,
-    getProfileCars,
-    getOneCar,
-    getAllCars,
-    addCar,
+    getTop3Cafes,
+    deleteCoffee,
+    editCoffee,
+    getProfileCafes,
+    getOneCoffee,
+    getAllCafes,
+    addCoffee,
 }
