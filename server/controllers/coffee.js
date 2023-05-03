@@ -1,6 +1,6 @@
 const User = require('../models/User');
-const cloudinary = require('cloudinary');
-const uploader = require("../services/multer");
+// const cloudinary = require('cloudinary');
+// const uploader = require("../services/multer");
 const { addCar, getAllCars, getOneCar, getProfileCars, editCar, deleteACar, getTop3Cars, addToFavourite, getFavouriteCars, removeFromFavourites } = require('../services/coffee');
 const { updateCarsOnUser } = require('../services/user');
 
@@ -11,16 +11,16 @@ router.post('/', uploader.array('carPhotos'), async (req, res) => {
     const data = req.body.data;
     try {
         data.carImages = []
-        if (base64?.length > 0) {
-            for (let el of base64) {
-                const uploaded = await cloudinary.v2.uploader.upload(el, { fetch_format: "auto" });
-                let objectToPush =  {
-                    imageUrl: uploaded.url,
-                    imageId: uploaded.public_id,
-                }
-                data.carImages.push(objectToPush)
-            }
-        }
+        // if (base64?.length > 0) {
+        //     for (let el of base64) {
+        //         const uploaded = await cloudinary.v2.uploader.upload(el, { fetch_format: "auto" });
+        //         let objectToPush =  {
+        //             imageUrl: uploaded.url,
+        //             imageId: uploaded.public_id,
+        //         }
+        //         data.carImages.push(objectToPush)
+        //     }
+        // }
         console.log(data)
         const userId = req?.user?._id;
         const car = await addCar(data, userId)
@@ -90,29 +90,30 @@ router.get('/:id', async (req, res) => {
         res.status(400).json({ error: error.message })
     }
 })
-router.put('/:id', uploader.array('carPhotos'), async (req, res) => {
+// AFTER ID, uploader.array('carPhotos')
+router.put('/:id', async (req, res) => {
     console.log('here')
     const id = req.params.id;
     console.log(req.body)
-    const base64 = req.body.base64;
+    // const base64 = req.body.base64;
     const data = req.body;
 
     const car = await getOneCar(id)
     try {
         data.carImages = []
         if (req?.user._id == car.owner._id) {
-            if (base64) {
-                for (let el of base64) {
-                    const uploaded = await cloudinary.v2.uploader.upload(el, { fetch_format: "auto" });
-                    let objectToPush =  {
-                        imageUrl: uploaded.url,
-                        imageId: uploaded.public_id,
-                    }
-                    data.carImages.push(objectToPush)
-                }
-            }else {
-                data.carImages.push(data.imageUrl)
-            }
+            // if (base64) {
+            //     for (let el of base64) {
+            //         const uploaded = await cloudinary.v2.uploader.upload(el, { fetch_format: "auto" });
+            //         let objectToPush =  {
+            //             imageUrl: uploaded.url,
+            //             imageId: uploaded.public_id,
+            //         }
+            //         data.carImages.push(objectToPush)
+            //     }
+            // }else {
+            //     data.carImages.push(data.imageUrl)
+            // }
             await editCar(id, data)
             const updatedCar = await getOneCar(id)
             res.status(200).json(updatedCar)
@@ -133,9 +134,9 @@ router.delete('/:id', async (req, res) => {
         carsArray.splice(deletionIndex, 1)
         await User.findByIdAndUpdate(req.user._id, { cars: carsArray })
         let car = await deleteACar(id)
-        if (car.imageId) {
-            await cloudinary.v2.uploader.destroy(car.imageId)
-        }
+        // if (car.imageId) {
+        //     await cloudinary.v2.uploader.destroy(car.imageId)
+        // }
         res.status(200).json('Deleted!')
     } else {
         res.status(400).json({ error: 'You are not the owner of the car!' })
