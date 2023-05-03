@@ -6,28 +6,28 @@ const userSchema = new mongoose.Schema({
         required: true,
         type: String,
         minlength: [4, 'Username should have at least 4 characters!'],
-        maxlength: [10, 'Username cannot have more than 10 characters!'],
+        maxlength: [10, 'Username cannot have more than 10 characters!']
     },
     email: {
         required: true,
-        type: String,
+        type: String
     },
     password: {
         required: true,
         type: String,
-        minlength: [6, 'Password should have at least 6 characters!'],
-        maxlength: [12, 'Password cannot have more than 12 characters!'],
+        minlength: [3, 'Password should have at least 3 characters!'],
+        maxlength: [6, 'Password cannot have more than 6 characters!']
     },
     cafes: [
         {
             type: mongoose.Types.ObjectId,
-            ref: 'Coffee',
+            ref: 'Coffee'
         }
     ],
     favouriteCafes: [
         {
             type: mongoose.Types.ObjectId,
-            ref: 'Car',
+            ref: 'Coffee'
         }
     ],
     avatarImg: {
@@ -38,13 +38,15 @@ const userSchema = new mongoose.Schema({
         required: false,
         type: String,
     }
-})
+});
+
 userSchema.pre('save', function (next) {
-    bcrypt.hash(this.password, 10)
+    bcrypt.hash(this.password, 9)
         .then((hash) => {
             this.password = hash
             return next()
         })
-})
+});
+
 const user = new mongoose.model('User', userSchema);
 module.exports = user;
