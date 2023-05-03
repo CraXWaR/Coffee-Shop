@@ -120,7 +120,7 @@ router.put('/:id', async (req, res) => {
         } else {
             throw new Error('You are not the owner!')
         }
-       
+
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
