@@ -53,12 +53,12 @@ const login = async (email, password) => {
         throw new Error('Invalid email or password!')
     }
 }
-const updateCarsOnUser = async (_id, carId) => {
+const updateCafesOnUser = async (_id, carId) => {
     try {
         const user = await User.findById(_id);
-        let array = user.cars
+        let array = user.cafes
         array.push(carId)
-        await User.findByIdAndUpdate(_id, { cars: array })
+        await User.findByIdAndUpdate(_id, { cafes: array })
     } catch (error) {
         throw new Error(error)
     }
@@ -72,7 +72,7 @@ const getUnknownUser = async (username) => {
 module.exports = {
     logout,
     getUnknownUser,
-    updateCarsOnUser,
+    updateCafesOnUser,
     login,
     register,
     createAccessToken,
