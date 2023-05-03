@@ -2,13 +2,11 @@ const mongoose = require('mongoose');
 
 const coffeeSchema = new mongoose.Schema({
     make: {
-        //Mercedes-Benz
         required: true,
         type: String,
         minlength: [3, 'You should have at least 3 characters!']
     },
     model: {
-        //S-Class
         required: true,
         type: String,
         minlength: [2, 'You should have at least 2 characters!']
