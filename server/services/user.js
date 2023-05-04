@@ -53,11 +53,11 @@ const login = async (email, password) => {
         throw new Error('Invalid email or password!')
     }
 }
-const updateCafesOnUser = async (_id, carId) => {
+const updateCafesOnUser = async (_id, coffeeId) => {
     try {
         const user = await User.findById(_id);
         let array = user.cafes
-        array.push(carId)
+        array.push(coffeeId)
         await User.findByIdAndUpdate(_id, { cafes: array })
     } catch (error) {
         throw new Error(error)
@@ -67,7 +67,7 @@ const logout = async (token) => {
     await blacklisted.create({ token })
 }
 const getUnknownUser = async (username) => {
-    return await User.findOne({ username }).populate('cars');
+    return await User.findOne({ username }).populate('cafes');
 }
 module.exports = {
     logout,

@@ -35,20 +35,20 @@ const getTop3Cafes = async () => {
     const cafes = await Coffee.find({}).sort({ price: -1 }).limit(3)
     return cafes
 }
-const addToFavourite = async (userId, carId) => {
+const addToFavourite = async (userId, coffeeId) => {
     try {
         //Adding coffee to user
         const user = await User.findById(userId);
         let array = user.favouriteCafes;
-        array.push(carId);
+        array.push(coffeeId);
         console.log(userId);
-        console.log(carId);
+        console.log(coffeeId);
         await User.findByIdAndUpdate(userId, { favouriteCafes: array });
         //Adding user to coffee
-        let coffee = await Coffee.findById(carId);
+        let coffee = await Coffee.findById(coffeeId);
         let coffeeArray = coffee.addedBy;
         coffeeArray.push(userId);
-        await Coffee.findByIdAndUpdate(carId, { addedBy: coffeeArray });
+        await Coffee.findByIdAndUpdate(coffeeId, { addedBy: coffeeArray });
     } catch (error) {
         throw new Error(error);
     }
@@ -57,19 +57,19 @@ const addToFavourite = async (userId, carId) => {
 const getFavouriteCafes = async (userId) => {
     return await User.findById(userId).populate('favouriteCafes')
 }
-const removeFromFavourites = async (userId, carId) => {
+const removeFromFavourites = async (userId, coffeeId) => {
     try {
         const user = await User.findById(userId);
         let userCoffeeArray = user.favouriteCafes
-        let userIndex = userCoffeeArray.indexOf(carId);
+        let userIndex = userCoffeeArray.indexOf(coffeeId);
         userCoffeeArray.splice(userIndex, 1)
         await User.findByIdAndUpdate(userId, { favouriteCafes: userCoffeeArray })
 
-        const car = await Coffee.findById(carId);
-        let coffeeUserArray = car.addedBy;
+        const coffee = await Coffee.findById(coffeeId);
+        let coffeeUserArray = coffee.addedBy;
         let coffeeUserIndex = coffeeUserArray.indexOf(userId)
         coffeeUserArray.splice(coffeeUserIndex, 1)
-        await Coffee.findByIdAndUpdate(carId, { addedBy: coffeeUserArray })
+        await Coffee.findByIdAndUpdate(coffeeId, { addedBy: coffeeUserArray })
     } catch (error) {
         throw new Error(error)
     }
