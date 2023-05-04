@@ -10,5 +10,5 @@ router.get('/', (req, res) => {
 router.use(authcontroller);
 // router.use(specialcontroller);
 router.use('/cafes', coffeecontroller);
-    
+
 module.exports = router;

@@ -3,7 +3,7 @@ const { validateToken } = require("../services/user");
 const authMiddleware = (req, res, next) => {
     // const token = req.headers['x-authorization']; -- Storing in local storage
     const cookie = req.cookies?.auth;
-    if(cookie != 'none' && cookie != undefined){
+    if (cookie != 'none' && cookie != undefined) {
         console.log('here')
         try {
             const user = validateToken(cookie);
@@ -17,7 +17,7 @@ const authMiddleware = (req, res, next) => {
             res.json(error)
             console.log(error)
         }
-    }else {
+    } else {
         req.user = {
             cookie: 'none'
         }
