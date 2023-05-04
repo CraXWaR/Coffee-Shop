@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
     // const base64 = req.body.data.base64;
     const data = req.body.data;
     try {
-        data.carImages = []
+        data.caffeeImages = []
         // if (base64?.length > 0) {
         //     for (let el of base64) {
         //         const uploaded = await cloudinary.v2.uploader.upload(el, { fetch_format: "auto" });
@@ -33,24 +33,24 @@ router.post('/', async (req, res) => {
     res.end()
 })
 router.get('/', async (req, res) => {
-    const cars = await getAllCafes()
-    res.status(200).json(cars)
+    const cafes = await getAllCafes()
+    res.status(200).json(cafes)
 })
-router.get('/mycars', async (req, res) => {
+router.get('/mycafes', async (req, res) => {
     const _id = req?.user?._id;
-    const cars = await getProfileCafes(_id)
-    res.status(200).json(cars)
+    const cafes = await getProfileCafes(_id)
+    res.status(200).json(cafes)
     res.end()
 })
 router.get('/most', async (req, res) => {
-    const cars = await getTop3Cafes()
-    res.status(200).json(cars)
+    const cafes = await getTop3Cafes()
+    res.status(200).json(cafes)
 })
 router.delete('/favourites/:id', async (req, res) => {
     try {
         const userId = req.user._id;
-        const carId = req.params.id;
-        await removeFromFavourites(userId, carId)
+        const caffeeId = req.params.id;
+        await removeFromFavourites(userId, caffeeId)
         res.status(200).json('Success')
     } catch (error) {
         res.status(400).json({ error: error.message })
@@ -59,18 +59,18 @@ router.delete('/favourites/:id', async (req, res) => {
 router.get('/favourites/:id', async (req, res) => {
     try {
         const userId = req.user._id;
-        const carId = req.params.id;
-        await addToFavourite(userId, carId)
+        const caffeeId = req.params.id;
+        await addToFavourite(userId, caffeeId)
         res.status(200).json('Success')
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
 })
-router.get('/favourite-cars', async (req, res) => {
+router.get('/favourite-cafes', async (req, res) => {
     let userId = req.user._id
     try {
-        let cars = await getFavouriteCafes(userId)
-        res.status(200).json(cars?.favouriteCars)
+        let cafes = await getFavouriteCafes(userId)
+        res.status(200).json(cafes?.getFavouriteCafes)
     } catch (error) {
         console.log(error)
         res.status(400).json({ error: error.message })
@@ -79,11 +79,11 @@ router.get('/favourite-cars', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         let id = req.params.id;
-        const car = await getOneCoffee(id);
-        if (car) {
-            res.status(200).json(car)
+        const coffee = await getOneCoffee(id);
+        if (coffee) {
+            res.status(200).json(coffee)
         } else {
-            throw new Error('Invalid car ID!')
+            throw new Error('Invalid coffee ID!')
         }
     } catch (error) {
         console.log(error)
@@ -100,7 +100,7 @@ router.put('/:id', async (req, res) => {
 
     const coffee = await getOneCoffee(id)
     try {
-        data.carImages = []
+        data.caffeeImages = []
         if (req?.user._id == coffee.owner._id) {
             // if (base64) {
             //     for (let el of base64) {
@@ -112,7 +112,7 @@ router.put('/:id', async (req, res) => {
             //         data.carImages.push(objectToPush)
             //     }
             // }else {
-            //     data.carImages.push(data.imageUrl)
+            //     data.caffeeImages.push(data.imageUrl)
             // }
             await editCoffee(id, data)
             const updatedCoffee = await getOneCoffee(id)
@@ -128,18 +128,18 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const user = await User.findById(req.user._id)
     const id = req.params.id;
-    if (user.cars.includes(id)) {
+    if (user.cafes.includes(id)) {
         let cafesArray = user.cafes;
         let deletionIndex = cafesArray.indexOf(id)
         cafesArray.splice(deletionIndex, 1)
         await User.findByIdAndUpdate(req.user._id, { cafes: cafesArray })
         let coffee = await deleteCoffee(id)
-        // if (car.imageId) {
-        //     await cloudinary.v2.uploader.destroy(car.imageId)
+        // if (coffee.imageId) {
+        //     await cloudinary.v2.uploader.destroy(coffee.imageId)
         // }
         res.status(200).json('Deleted!')
     } else {
-        res.status(400).json({ error: 'You are not the owner of the car!' })
+        res.status(400).json({ error: 'You are not the owner of the coffee!' })
     }
 })
 
