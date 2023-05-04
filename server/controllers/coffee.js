@@ -7,7 +7,7 @@ const { updateCafesOnUser } = require('../services/user');
 const router = require('express').Router();
 // TODO AFTER /, uploader.array('carPhotos')
 router.post('/', async (req, res) => {
-    const base64 = req.body.data.base64;
+    // const base64 = req.body.data.base64;
     const data = req.body.data;
     try {
         data.carImages = []

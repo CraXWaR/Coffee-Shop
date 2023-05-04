@@ -16,7 +16,7 @@ router.post('/register', async (req, res) => {
         //     data.imageId = upload.public_id
         // }
         const user = await register(data);
-        res.cookie("auth", user.accessToken, { httpOnly: true, secure: true,sameSite: 'none'});
+        res.cookie("auth", user.accessToken, { httpOnly: true, secure: true, sameSite: 'none' });
         res.status(201).json(user)
     } catch (error) {
         console.log(error)
@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await login(email, password)
-        res.cookie("auth", user.accessToken, { httpOnly: true, sameSite: 'none' , secure: true});
+        res.cookie("auth", user.accessToken, { httpOnly: true, sameSite: 'none', secure: true });
         res.status(201).json(user)
     } catch (error) {
         res.status(400).json({ error: error.message })
@@ -36,8 +36,8 @@ router.post('/login', async (req, res) => {
 })
 router.delete('/logout', async (req, res) => {
     // res.clearCookie('auth');
-    res.cookie("auth", 'none', { httpOnly: true, sameSite: 'none' , secure: true});
-    res.send({ message: 'Cookie cleared successfully' }) 
+    res.cookie("auth", 'none', { httpOnly: true, sameSite: 'none', secure: true });
+    res.send({ message: 'Cookie cleared successfully' })
 
 
     // -- Clearing token from local storage
@@ -48,7 +48,7 @@ router.get('/user', async (req, res) => {
     let cookie = req.user.cookie;
     if (cookie != 'none') {
         let user = await User.findOne({ token: cookie })
-        if(user) {
+        if (user) {
             let userToReturn = {
                 _id: user._id,
                 username: user.username,
