@@ -53,8 +53,8 @@ router.get('/user', async (req, res) => {
                 _id: user._id,
                 username: user.username,
                 email: user.email,
-                cars: user.cars,
-                favouriteCars: user.favouriteCars,
+                cafes: user.cafes,
+                favouriteCafes: user.favouriteCafes,
                 avatarImg: user.avatarImg,
                 imageId: user.imageId,
             }
