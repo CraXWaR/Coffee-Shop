@@ -1,74 +1,73 @@
 /* Header styles */
 .navbar {
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-  }
-  
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.navbar-brand {
+  margin-left: .5rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar-brand:hover {
+  cursor: default;
+}
+
+.navbar-nav>li>a {
+  color: #555;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.navbar-nav>li>a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.navbar-nav>li.active>a {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.navbar-nav:last-child>li:last-child>a {
+  margin-right: 0;
+}
+
+/* Styles for the right side links */
+.navbar-nav:last-child>li>a {
+  margin-right: 10px;
+  border: 1px solid #007bff;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.navbar-nav:last-child>li>a:hover {
+  background-color: #fff;
+  color: #007bff;
+}
+
+.navbar-nav:last-child {
+  margin-right: 20px;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
   .navbar-brand {
-    margin-left: .5rem;
-    font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
-  .navbar-brand:hover {
-    cursor: default;
-  }
-  
-  .navbar-nav > li > a {
-    color: #555;
-    font-size: 1.1rem;
-    font-weight: 500;
-    padding: 10px 20px;
-    transition: all 0.3s ease-in-out;
-    border-radius: 5px;
-    margin-right: 10px;
-  }
-  
-  .navbar-nav > li > a:hover {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  .navbar-nav > li.active > a {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  .navbar-nav:last-child > li:last-child > a {
+  .navbar-nav>li>a {
+    font-size: 1rem;
+    padding: 10px;
     margin-right: 0;
   }
-  
-  /* Styles for the right side links */
-  .navbar-nav:last-child > li > a {
-    margin-right: 10px;
-    border: 1px solid #007bff;
-    background-color: #007bff;
-    color: #fff;
+
+  .navbar-nav>li:last-child>a {
+    margin-bottom: 10px;
   }
-  
-  .navbar-nav:last-child > li > a:hover {
-    background-color: #fff;
-    color: #007bff;
-  }
-  
-  .navbar-nav:last-child {
-    margin-right: 20px;
-  }
-  
-  /* Media queries for responsive design */
-  @media (max-width: 768px) {
-    .navbar-brand {
-      font-size: 1.2rem;
-    }
-    
-    .navbar-nav > li > a {
-      font-size: 1rem;
-      padding: 10px;
-      margin-right: 0;
-    }
-    
-    .navbar-nav > li:last-child > a {
-      margin-bottom: 10px;
-    }
-  }
-  
+}
