@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     AuthModule,
     CoreModule,
+    PagesModule,
     NgbModule
   ],
   providers: [],
