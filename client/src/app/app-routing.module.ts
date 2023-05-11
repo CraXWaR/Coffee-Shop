@@ -4,6 +4,7 @@ import { HomeComponent } from './core/home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
+import { CreateComponent } from './pages/create/create.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,13 @@ const routes: Routes = [
     component: CatalogComponent,
     data: {
       title: 'Catalog Page'
+    }
+  },
+  {
+    path: 'create',
+    component: CreateComponent,
+    data: {
+      title: 'Create Page'
     }
   }
 ];
