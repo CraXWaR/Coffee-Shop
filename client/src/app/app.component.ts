@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivationStart, Router } from '@angular/router';
+import { filter, map } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,12 @@ export class AppComponent {
   title = 'client';
 
   constructor(private router: Router, private pageTitle: Title) {
-    
+    this.router.events.pipe(
+      filter((e): e is ActivationStart => e instanceof ActivationStart),
+      map(e => e.snapshot.data?.['title']),
+      filter((d) => !!d)
+    ).subscribe((pageTitle) => {
+      this.pageTitle.setTitle(pageTitle)
+    });
   }
 }
