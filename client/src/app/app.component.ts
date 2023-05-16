@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'client';
+
+  constructor(private router: Router, private pageTitle: Title) {
+    
+  }
 }
