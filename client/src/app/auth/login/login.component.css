@@ -1,6 +1,6 @@
 .image {
     background-image: url('../../../assets/coffee-bar.jpg');
-    height: 100vh;
+    height: 89vh;
 }
 p {
     color: #b3b3b3;
@@ -42,7 +42,7 @@ h2 {
 
 .half,
 .half .container>.row {
-    height: 100vh;
+    height: 89vh;
     min-height: 700px;
 }
 
@@ -107,5 +107,6 @@ h2 {
 .half {
     position: relative;
     top: 2px;
+    right: 2px;
     font-size: 14px;
 }
