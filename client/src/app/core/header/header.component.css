@@ -55,6 +55,15 @@
   margin-right: 20px;
 }
 
+.btn { 
+  background-color: #007bff;
+}
+
+.dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
 /* Media queries for responsive design */
 @media (max-width: 768px) {
   .navbar-brand {
