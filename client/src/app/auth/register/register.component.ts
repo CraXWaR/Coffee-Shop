@@ -20,16 +20,16 @@ export class RegisterComponent {
       rePassword: ['', [Validators.required]],
       avatarImg: ['', [Validators.required]]
     });
-   }
+  }
 
   async register() {
     this.userService.register(this.form.value).subscribe({
-      next:() => {
+      next: () => {
         this.router.navigate(['/'])
       },
-      error:(err) => {
+      error: (err) => {
         console.log(err);
-        
+
       }
     });
   }
