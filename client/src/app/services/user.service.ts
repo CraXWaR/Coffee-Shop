@@ -9,7 +9,7 @@ const API_URL = 'http://localhost:3030';
   providedIn: 'root'
 })
 export class UserService {
-  user: null | UserInterface | undefined ;
+  user: null | UserInterface | undefined;
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +18,6 @@ export class UserService {
       tap((user) => {
         this.user = user
       })
-    )
+    );
   }
 }
