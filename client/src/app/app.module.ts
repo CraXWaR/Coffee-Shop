@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PagesModule } from './pages/pages.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PagesModule } from './pages/pages.module';
     AuthModule,
     CoreModule,
     PagesModule,
+    HttpClientModule,
     NgbModule
   ],
   providers: [],
