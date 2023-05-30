@@ -14,13 +14,14 @@ export class LoginComponent {
 
   constructor(private userService: UserService, private router: Router) { }
 
-  login(form: NgForm): void{
+  login(form: NgForm): void {
     this.userService.login(form.value).subscribe({
       next: () => {
         this.router.navigate(['/']);
       },
       error: (err) => {
-        console.log(err); 
+        //TODO create error handler
+        console.log(err);
       }
     })
   }

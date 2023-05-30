@@ -28,8 +28,8 @@ export class RegisterComponent {
         this.router.navigate(['/'])
       },
       error: (err) => {
+        //TODO create error handler
         console.log(err);
-
       }
     });
   }
