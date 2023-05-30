@@ -20,4 +20,12 @@ export class UserService {
       })
     );
   }
+
+  login(data: {}) {
+    return this.http.post<UserInterface>(`${API_URL}/login`, data).pipe(
+      tap((user) => {
+        this.user = user
+      })
+    );
+  }
 }
