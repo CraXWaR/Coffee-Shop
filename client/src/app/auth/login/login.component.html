@@ -7,15 +7,15 @@
                 <div class="col-md-7">
                     <h3>Login to <strong>CoffeeShop</strong></h3>
                     <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
-                    <form action="#" method="post">
+                    <form #form="ngForm" (ngSubmit)="login(form)" method="post">
                         <div class="form-group first">
                             <label for="email" class="mb-2 h5">Email</label>
                             <input type="text" class="form-control mb-2" placeholder="your-email@gmail.com"
-                                id="username">
+                                id="email" ngModel #email="ngModel">
                         </div>
                         <div class="form-group last mb-3">
                             <label for="password" class="mb-2 h5">Password</label>
-                            <input type="password" class="form-control mb-2" placeholder="Your Password" id="password">
+                            <input type="password" class="form-control mb-2" placeholder="Your Password" id="password" ngModel #password="ngModel">
                         </div>
                         <div class="d-flex mb-4 align-items-center">
                             <span>Don't have an account yet? <a href="/register"> Register now!</a></span>
