@@ -15,26 +15,26 @@ export class UserService {
 
   get isLoggedIn(): boolean {
     if (this.user) {
-      return true;
+      return true
     } else {
-      return false;
+      return false
     }
   }
 
   register(data: {}) {
     return this.http.post<UserInterface>(`${API_URL}/register`, data).pipe(
       tap((user) => {
-        this.user = user
+        this.user = user;
       })
-    );
+    )
   }
 
   login(data: {}) {
-    return this.http.post<UserInterface>(`${API_URL}/login`, data).pipe(
+    return this.http.post<UserInterface>(`${API_URL}/login`, data,).pipe(
       tap((user) => {
-        this.user = user
+        this.user = user;
       })
-    );
+    )
   }
 
   logout() {

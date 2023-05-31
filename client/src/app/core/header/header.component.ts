@@ -11,9 +11,9 @@ export class HeaderComponent {
 
   get isLoggedIn(): boolean {
     if (this.userService.user) {
-      return true;
+      return true
     } else {
-      return false;
+      return false
     }
   }
 

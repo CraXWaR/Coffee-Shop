@@ -34,7 +34,7 @@
             </ng-container>
             <ng-container *ngIf="isLoggedIn">
                 <li class="nav-item">
-                    <a class="dropdown-item nav-link" href="/logout">Logout</a>
+                    <a class="dropdown-item nav-link" (click)="onLogout()">Logout</a>
                 </li>
             </ng-container>
         </div>
