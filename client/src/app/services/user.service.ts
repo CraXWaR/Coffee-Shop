@@ -12,7 +12,15 @@ export class UserService {
   user: null | UserInterface | undefined;
 
   constructor(private http: HttpClient) { }
-  //TODO make logout
+  
+  get isLoggedIn(): boolean {
+    if (this.user) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   register(data: {}) {
     return this.http.post<UserInterface>(`${API_URL}/register`, data).pipe(
       tap((user) => {
