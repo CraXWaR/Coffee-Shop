@@ -12,7 +12,7 @@ export class UserService {
   user: null | UserInterface | undefined;
 
   constructor(private http: HttpClient) { }
-
+//TODO fix reload lose user
   get isLoggedIn(): boolean {
     if (this.user) {
       return true
