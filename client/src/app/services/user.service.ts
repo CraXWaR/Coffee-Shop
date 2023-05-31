@@ -28,4 +28,9 @@ export class UserService {
       })
     );
   }
+
+  logout() {
+    this.user = null;
+    return this.http.delete(`${API_URL}/logout`).subscribe();
+  }
 }
