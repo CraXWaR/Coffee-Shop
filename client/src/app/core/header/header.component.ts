@@ -7,9 +7,9 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent { 
+export class HeaderComponent {
 
-  get isLoggedIn():boolean{
+  get isLoggedIn(): boolean {
     if (this.userService.user) {
       return true;
     } else {
