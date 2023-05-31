@@ -12,7 +12,7 @@ export class UserService {
   user: null | UserInterface | undefined;
 
   constructor(private http: HttpClient) { }
-  
+
   get isLoggedIn(): boolean {
     if (this.user) {
       return true;
