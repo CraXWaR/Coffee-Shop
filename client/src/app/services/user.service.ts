@@ -25,6 +25,7 @@ export class UserService {
     return this.http.post<UserInterface>(`${API_URL}/register`, data).pipe(
       tap((user) => {
         this.user = user;
+        localStorage.setItem('token', this.user.accessToken);
       })
     )
   }
