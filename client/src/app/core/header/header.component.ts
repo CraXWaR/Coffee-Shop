@@ -8,7 +8,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-//TODO fix reload lose user
+
+  token: string | null = localStorage.getItem('token');
+
   get isLoggedIn(): boolean {
     if (this.userService.user) {
       return true
