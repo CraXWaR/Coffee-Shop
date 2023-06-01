@@ -40,6 +40,7 @@ export class UserService {
   }
 
   logout() {
+    localStorage.removeItem('token');
     this.user = null;
     return this.http.delete(`${API_URL}/logout`).subscribe();
   }
