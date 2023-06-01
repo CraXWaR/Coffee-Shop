@@ -12,7 +12,7 @@ export class HeaderComponent {
   token: string | null = localStorage.getItem('token');
 
   get isLoggedIn(): boolean {
-    if (this.userService.user) {
+    if (localStorage.getItem('token')) {
       return true
     } else {
       return false
