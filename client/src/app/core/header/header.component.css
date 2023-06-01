@@ -64,6 +64,10 @@
   right: 0;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 /* Media queries for responsive design */
 @media (max-width: 768px) {
   .navbar-brand {
