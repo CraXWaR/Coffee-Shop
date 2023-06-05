@@ -11,6 +11,6 @@ export class CoffeeService {
   constructor(private http: HttpClient) { }
 
   addCoffee(data: any) {
-    return this.http.post(`${API_URL}/cafes`, {data});
+    return this.http.post(`${API_URL}/cafes`, { data });
   }
 }
