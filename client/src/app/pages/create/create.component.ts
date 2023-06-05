@@ -14,15 +14,14 @@ export class CreateComponent {
 
   constructor(private coffeeService: CoffeeService, private router: Router) { }
 
-  async addCoffee(form: NgForm){
+  async addCoffee(form: NgForm) {
     this.coffeeService.addCoffee(form.value).subscribe({
       next: () => {
-        this.router.navigate(['/catalog'])
+        this.router.navigate(['/catalog']);
       },
       error: (err) => {
-       console.log(err);
-       
+        console.log(err);
       }
-    })
+    });
   }
 }
