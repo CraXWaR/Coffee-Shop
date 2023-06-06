@@ -17,6 +17,7 @@ export class CreateComponent {
   async addCoffee(form: NgForm) {
     this.coffeeService.addCoffee(form.value).subscribe({
       next: () => {
+        console.log(form.value);
         this.router.navigate(['/catalog']);
       },
       error: (err) => {
