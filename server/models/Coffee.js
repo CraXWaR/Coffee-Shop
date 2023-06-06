@@ -15,10 +15,6 @@ const coffeeSchema = new mongoose.Schema({
         required: true,
         type: Number,
     },
-    imageUrl: {
-        required: false,
-        type: String,
-    },
     description: {
         required: true,
         type: String,
@@ -30,6 +26,10 @@ const coffeeSchema = new mongoose.Schema({
         required: true,
         type: Number,
         min: [1, 'Coffee should be more expensive than 1$!'],
+    },
+    imageUrl: {
+        required: false,
+        type: String,
     },
     owner: {
         type: mongoose.Types.ObjectId,
