@@ -13,7 +13,7 @@ export class CreateComponent {
   errors: string | undefined = undefined;
 
   constructor(private coffeeService: CoffeeService, private router: Router) { }
-  //TODO create html form
+
   async addCoffee(form: NgForm) {
     this.coffeeService.addCoffee(form.value).subscribe({
       next: () => {
