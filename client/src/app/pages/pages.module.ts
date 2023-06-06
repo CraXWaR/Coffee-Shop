@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CreateComponent } from './create/create.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { DetailsComponent } from './details/details.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { DetailsComponent } from './details/details.component';
     DetailsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class PagesModule { }
