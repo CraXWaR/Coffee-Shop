@@ -15,9 +15,13 @@ export class CreateComponent {
   constructor(private coffeeService: CoffeeService, private router: Router) { }
 
   async addCoffee(form: NgForm) {
+
+    let token = localStorage.getItem('token');
+    let value = form.value;
+    value.token = token;
+    
     this.coffeeService.addCoffee(form.value).subscribe({
       next: () => {
-        console.log(form.value);
         this.router.navigate(['/catalog']);
       },
       error: (err) => {

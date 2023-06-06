@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
     // const base64 = req.body.data.base64;
     const data = req.body.data;
     try {
-        data.caffeeImages = []
+        // data.caffeeImages = []
         // if (base64?.length > 0) {
         //     for (let el of base64) {
         //         const uploaded = await cloudinary.v2.uploader.upload(el, { fetch_format: "auto" });
@@ -23,6 +23,7 @@ router.post('/', async (req, res) => {
         // }
         console.log(data)
         const userId = req?.user?._id;
+        console.log(req?.user);
         const coffee = await addCoffee(data, userId)
         await updateCafesOnUser(userId, coffee._id)
         res.status(201).json(coffee)
