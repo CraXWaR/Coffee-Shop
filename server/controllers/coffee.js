@@ -3,12 +3,14 @@ const User = require('../models/User');
 // const uploader = require("../services/multer");
 const { addCoffee, getAllCafes, getOneCoffee, getProfileCafes, editCoffee, deleteCoffee, getTop3Cafes, addToFavourite, getFavouriteCafes, removeFromFavourites } = require('../services/coffee');
 const { updateCafesOnUser } = require('../services/user');
+const jwtDecode = require('jwt-decode');
 
 const router = require('express').Router();
 // TODO AFTER /, uploader.array('carPhotos')
 router.post('/', async (req, res) => {
     // const base64 = req.body.data.base64;
     const data = req.body.data;
+    let token = jwtDecode(data.token)
     try {
         // data.caffeeImages = []
         // if (base64?.length > 0) {
@@ -21,9 +23,7 @@ router.post('/', async (req, res) => {
         //         data.carImages.push(objectToPush)
         //     }
         // }
-        console.log(data)
-        const userId = req?.user?._id;
-        console.log(req?.user);
+        const userId = token._id;
         const coffee = await addCoffee(data, userId)
         await updateCafesOnUser(userId, coffee._id)
         res.status(201).json(coffee)
