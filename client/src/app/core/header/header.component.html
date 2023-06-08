@@ -9,10 +9,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/catalog">Catalog</a>
             </li>
+            <ng-container *ngIf="isLoggedIn">
             <li class="nav-item">
                 <a class="nav-link" href="#">Profile</a>
             </li>
-            <ng-container *ngIf="isLoggedIn">
+            
                 <li class="nav-item">
                     <a class="nav-link" href="/create">Create</a>
                 </li>
