@@ -4,15 +4,17 @@
             <h1 class="fw-bolder">Coffee Catalog</h1>
             <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
-        <div class="row gx-5">
-            <div class="col-lg-3">
-                <div class="position-relative mb-5">
-                    <img class="img-fluid rounded-3 mb-3" src="https://dummyimage.com/600x400/343a40/6c757d"
-                        alt="..." />
-                    <a class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
+        <div class="row gx-5" *ngIf="cafes">
+            <ng-container>
+                <div class="col-lg-3">
+                    <div class="position-relative mb-5">
+                        <img class="img-fluid rounded-3 mb-3" src="https://dummyimage.com/600x400/343a40/6c757d"
+                            alt="..." />
+                        <a class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3">
+            </ng-container>
+            <!-- <div class="col-lg-3">
                 <div class="position-relative mb-5">
                     <img class="img-fluid rounded-3 mb-3" src="https://dummyimage.com/600x400/343a40/6c757d"
                         alt="..." />
@@ -32,7 +34,7 @@
                         alt="..." />
                     <a class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>
