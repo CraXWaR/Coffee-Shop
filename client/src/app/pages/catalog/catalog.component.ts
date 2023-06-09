@@ -16,4 +16,17 @@ export class CatalogComponent {
   constructor(private coffeeService: CoffeeService) {
 
   }
+
+  getAllCafes() {
+    this.cafes = undefined;
+    this.coffeeService.getAllCafes().subscribe({
+      next:(cafes) => {
+        this.cafes=cafes;
+        this.cafesLength = cafes.length || 0;
+        if (cafes.length == 0) {
+          this.isEmpty = true;
+        }
+      }
+    });
+  }
 }
