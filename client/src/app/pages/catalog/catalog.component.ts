@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CoffeeService } from 'src/app/services/coffee.service';
+import { CoffeeInterface } from 'src/app/shared/interfaces/coffee-interface';
 
 @Component({
   selector: 'app-catalog',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class CatalogComponent {
 
+  cafes: CoffeeInterface[] | undefined;
+  cafesLength: any;
+  isEmpty: boolean = false;
+
+  constructor(private coffeeService: CoffeeService) {
+
+  }
 }
