@@ -14,19 +14,19 @@ export class CatalogComponent {
   isEmpty: boolean = false;
 
   constructor(private coffeeService: CoffeeService) {
-
+    this.getAllCafes();
   }
 
   getAllCafes() {
     this.cafes = undefined;
     this.coffeeService.getAllCafes().subscribe({
       next: (cafes) => {
-        this.cafes = cafes;
+        this.cafes = cafes; 
         this.cafesLength = cafes.length || 0;
         if (cafes.length == 0) {
           this.isEmpty = true;
         }
       }
-    });
+    })
   }
 }
