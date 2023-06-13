@@ -45,7 +45,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'details',
+    path: 'cafes/:id',
     component: DetailsComponent,
     data: {
       title: 'Details Page'
