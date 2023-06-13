@@ -1,2 +1,2 @@
 # Coffee-Shop
-SPA for buying and selling coffee
+SPA for Coffee Shop
