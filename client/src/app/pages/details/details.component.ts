@@ -14,7 +14,20 @@ export class DetailsComponent {
   errors: Object | undefined;
 
   constructor(private coffeeService: CoffeeService, private activatedRoute: ActivatedRoute, private router: Router) {
-    
+
+  }
+
+  getCoffee(): void{
+    this.coffee = undefined;
+    const id = this.activatedRoute.snapshot.params['id'];
+
+    this.coffeeService.getOneCoffee(id).subscribe({
+      next: (coffee) => {
+        this.coffee = coffee;
+      }, error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
 }
