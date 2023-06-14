@@ -16,6 +16,10 @@ export class CoffeeService {
   }
 
   getAllCafes(){
-    return this.http.get<CoffeeInterface[]>(`${API_URL}/cafes`)
+    return this.http.get<CoffeeInterface[]>(`${API_URL}/cafes`);
+  }
+
+  getOneCoffee(id: string) {
+    return this.http.get<CoffeeInterface>(`${API_URL}/cafes/${id}`);
   }
 }
