@@ -24,7 +24,8 @@ export class DetailsComponent {
     this.coffeeService.getOneCoffee(id).subscribe({
       next: (coffee) => {
         this.coffee = coffee;
-      }, error: (err) => {
+      },
+      error: (err) => {
         console.log(err);
       }
     });
