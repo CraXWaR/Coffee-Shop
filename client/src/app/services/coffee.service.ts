@@ -15,7 +15,7 @@ export class CoffeeService {
     return this.http.post(`${API_URL}/cafes`, { data });
   }
 
-  getAllCafes(){
+  getAllCafes() {
     return this.http.get<CoffeeInterface[]>(`${API_URL}/cafes`);
   }
 

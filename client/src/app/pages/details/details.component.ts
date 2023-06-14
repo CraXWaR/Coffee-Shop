@@ -9,7 +9,7 @@ import { CoffeeInterface } from 'src/app/shared/interfaces/coffee-interface';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent {
-  
+
   coffee: CoffeeInterface | undefined;
   errors: Object | undefined;
 
@@ -17,7 +17,7 @@ export class DetailsComponent {
     this.getCoffee();
   }
 
-  getCoffee(): void{
+  getCoffee(): void {
     this.coffee = undefined;
     const id = this.activatedRoute.snapshot.params['id'];
 
