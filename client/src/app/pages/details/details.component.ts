@@ -14,7 +14,7 @@ export class DetailsComponent {
   errors: Object | undefined;
 
   constructor(private coffeeService: CoffeeService, private activatedRoute: ActivatedRoute, private router: Router) {
-
+    this.getCoffee();
   }
 
   getCoffee(): void{
