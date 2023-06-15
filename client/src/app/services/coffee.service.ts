@@ -23,7 +23,7 @@ export class CoffeeService {
     return this.http.get<CoffeeInterface>(`${API_URL}/cafes/${id}`);
   }
 
-  deleteCoffee(id: string) {
+  deleteCoffee(id: string | undefined) {
     return this.http.delete(`${API_URL}/cafes/${id}`);
   }
 }
