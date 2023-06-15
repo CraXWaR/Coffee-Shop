@@ -31,4 +31,15 @@ export class DetailsComponent {
     });
   }
 
+  onDelete() {
+    const id = this.coffee?._id;
+    
+    this.coffeeService.deleteCoffee(id).subscribe({
+      next: () => this.router.navigate(['/catalog']),
+      error: (err) => {
+        //TODO err handler
+        console.log(err);
+      }
+    });
+  }
 }
