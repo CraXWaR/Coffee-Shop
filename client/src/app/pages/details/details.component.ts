@@ -20,7 +20,7 @@ export class DetailsComponent {
   getCoffee(): void {
     this.coffee = undefined;
     const id = this.activatedRoute.snapshot.params['id'];
-
+    //TODO add if user is owner
     this.coffeeService.getOneCoffee(id).subscribe({
       next: (coffee) => {
         this.coffee = coffee;
