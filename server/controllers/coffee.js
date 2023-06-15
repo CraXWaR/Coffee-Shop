@@ -126,22 +126,23 @@ router.put('/:id', async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 })
-router.delete('/:id', async (req, res) => {
-    const user = await User.findById(req.user._id);
-    const id = req.params.id;
-    if (user.cafes.includes(id)) {
-        let cafesArray = user.cafes;
-        let deletionIndex = cafesArray.indexOf(id);
-        cafesArray.splice(deletionIndex, 1);
-        await User.findByIdAndUpdate(req.user._id, { cafes: cafesArray });
-        let coffee = await deleteCoffee(id);
-        // if (coffee.imageId) {
-        //     await cloudinary.v2.uploader.destroy(coffee.imageId)
-        // }
-        res.status(200).json('Deleted!');
-    } else {
-        res.status(400).json({ error: 'You are not the owner of the coffee!' });
-    }
-})
+//TODO FIX!!!
+// router.delete('/:id', async (req, res) => {
+//     const user = await User.findById(req.user._id);
+//     const id = req.params.id;
+//     if (user.cafes.includes(id)) {
+//         let cafesArray = user.cafes;
+//         let deletionIndex = cafesArray.indexOf(id);
+//         cafesArray.splice(deletionIndex, 1);
+//         await User.findByIdAndUpdate(req.user._id, { cafes: cafesArray });
+//         let coffee = await deleteCoffee(id);
+//         // if (coffee.imageId) {
+//         //     await cloudinary.v2.uploader.destroy(coffee.imageId)
+//         // }
+//         res.status(200).json('Deleted!');
+//     } else {
+//         res.status(400).json({ error: 'You are not the owner of the coffee!' });
+//     }
+// })
 
 module.exports = router;
