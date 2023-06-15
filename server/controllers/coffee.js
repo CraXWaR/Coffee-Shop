@@ -127,6 +127,10 @@ router.put('/:id', async (req, res) => {
     }
 })
 //TODO FIX!!!
+router.delete('/:id', async (req, res) => {
+    await deleteCoffee(req.params.id);
+    res.status(200).json('Coffee deleted!');
+});
 // router.delete('/:id', async (req, res) => {
 //     const user = await User.findById(req.user._id);
 //     const id = req.params.id;
