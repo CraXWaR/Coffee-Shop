@@ -42,4 +42,6 @@ export class DetailsComponent {
       }
     });
   }
+
+  //TODO create edit
 }
