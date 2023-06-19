@@ -68,6 +68,10 @@ a:hover {
   cursor: pointer;
 }
 
+.cart {
+  margin-right: 10px;
+}
+
 /* Media queries for responsive design */
 @media (max-width: 768px) {
   .navbar-brand {

@@ -7,6 +7,7 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
 import { CreateComponent } from './pages/create/create.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,13 @@ const routes: Routes = [
     component: ProfileComponent,
     data: {
       title: 'Profile Page'
+    }
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+    data: {
+      title: 'Your Cart'
     }
   }
 ];
