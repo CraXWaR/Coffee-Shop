@@ -12,6 +12,7 @@ const validateToken = (token) => {
         throw new Error('Invalid cookie token!')
     }
 }
+
 const createAccessToken = (user) => {
     const payload = {
         _id: user._id,
@@ -32,6 +33,7 @@ const createAccessToken = (user) => {
         _id: user._id
     };
 }
+
 const register = async (data) => {
     const existingEmail = await User.findOne({ email: data.email })
     const existingUsername = await User.findOne({ username: data.username })
@@ -44,6 +46,7 @@ const register = async (data) => {
     const user = await User.create(data)
     return createAccessToken(user)
 }
+
 const login = async (email, password) => {
     const user = await User.findOne({ email });
     if (!user) {
@@ -59,6 +62,7 @@ const login = async (email, password) => {
         throw new Error('Invalid email or password!')
     }
 }
+
 const updateCafesOnUser = async (_id, coffeeId) => {
     try {
         const user = await User.findById(_id);
@@ -69,18 +73,30 @@ const updateCafesOnUser = async (_id, coffeeId) => {
         throw new Error(error)
     }
 }
+
 const logout = async (token) => {
     await blacklisted.create({ token })
 }
+
+const updateUser = async (id, data) => {
+    try {
+        return await User.findByIdAndUpdate(id, { ...data }, { runValidators: true });
+    } catch (error) {
+        return error;
+    }
+}
+
 const getUnknownUser = async (username) => {
     return await User.findOne({ username }).populate('cafes');
 }
+
 module.exports = {
-    logout,
-    getUnknownUser,
-    updateCafesOnUser,
+    createAccessToken,
+    validateToken,
     login,
     register,
-    createAccessToken,
-    validateToken
+    getUnknownUser,
+    logout,
+    updateCafesOnUser,
+    updateUser
 }

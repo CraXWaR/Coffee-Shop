@@ -1,5 +1,4 @@
-const { register, login, getUnknownUser } = require('../services/user');
-const User = require('../models/User');
+const { register, login, getUnknownUser, updateUser } = require('../services/user');
 const router = require('express').Router();
 const jwtDecode = require('jwt-decode');
 
@@ -43,7 +42,7 @@ router.post('/user', async (req, res) => {
         const avatarImg = token.avatarImg;
         const cafes = token.cafes;
         const cart = token.cart
-        
+
         res.status(200).json({ "username": username, "email": email, "avatarImg": avatarImg, "cafes": { cafes }, "cart": { cart } });
         res.end();
     } catch (error) {
@@ -53,7 +52,6 @@ router.post('/user', async (req, res) => {
 
 router.put('/user/:id', async (req, res) => {
     const data = req.body;
-
     try {
         const token = jwtDecode(data.token);
         const userId = token._id;

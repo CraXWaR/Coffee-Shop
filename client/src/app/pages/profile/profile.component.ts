@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { UserInterface } from 'src/app/shared/interfaces/user-interface';
-import { emailValidator } from 'src/app/shared/validator';
+// import { emailValidator } from 'src/app/shared/validator';
+
+import jwt_decode from 'jwt-decode';
+import { handleError } from 'src/app/shared/errorHandler';
 
 @Component({
   selector: 'app-profile',
@@ -16,17 +19,26 @@ export class ProfileComponent {
   onEdit: boolean = false;
   form!: FormGroup;
   errors: string | undefined = undefined;
+  token: string | null = localStorage.getItem('token');
 
   constructor(private userService: UserService, private fb: FormBuilder, private router: Router) {
 
     this.getUserInfo();
 
-    this.form = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
-      email: ['', [Validators.required, emailValidator]],
-      avatarImg: ['', [Validators.required]]
-    });
+    // this.form = this.fb.group({
+    //   username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
+    //   email: ['', [Validators.required, emailValidator]],
+    //   avatarImg: ['', [Validators.required]]
+    // });
 
+  }
+
+  decodeToken(token: any) {
+    if (token) {
+      const decodedToken = jwt_decode(token);
+      return decodedToken;
+    }
+    return;
   }
 
   getUserInfo() {
@@ -42,24 +54,21 @@ export class ProfileComponent {
     });
   }
 
-  onEditUser() {
-    const id = this.user?._id;
-    let token = localStorage.getItem('token');
-    let value = this.form.value;
-    value.token = token;
+  onEditUser(form: NgForm) {
 
+    const decoded = this.decodeToken(this.token) as { _id: string };
+    const id = decoded._id;
+    let value = form.value;
+    value.token = this.token;
+    
     this.userService.editUser(id, value).subscribe({
       next: () => {
         this.userService.logout();
         this.router.navigate(['login']);
       },
       error: (err) => {
-        this.errors = errorHandler(err.error?.error);
+        this.errors = handleError(err.error?.error);
       }
     });
   }
 }
-function errorHandler(error: any): string | undefined {
-  throw new Error('Function not implemented.');
-}
-
