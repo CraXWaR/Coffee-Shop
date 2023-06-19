@@ -27,5 +27,7 @@ export class CoffeeService {
     return this.http.delete(`${API_URL}/cafes/${id}`);
   }
 
-  //TODO create edit
+  editCoffee(id: string | undefined, data: {}) {
+    return this.http.put<CoffeeInterface>(`${API_URL}/cafes/${id}`, data);
+  }
 }
