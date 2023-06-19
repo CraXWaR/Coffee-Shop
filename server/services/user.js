@@ -15,13 +15,19 @@ const validateToken = (token) => {
 const createAccessToken = (user) => {
     const payload = {
         _id: user._id,
-        email: user.email,
         username: user.username,
+        email: user.email,
+        avatarImg: user.avatarImg,
+        cafes: user.cafes,
+        cart: user.cart
     }
     const accessToken = jwt.sign(payload, server.SECRET_KEY)
     return {
-        email: user.email,
         username: user.username,
+        email: user.email,
+        avatarImg: user.avatarImg,
+        cafes: user.cafes,
+        cart: user.cart,
         accessToken,
         _id: user._id
     };

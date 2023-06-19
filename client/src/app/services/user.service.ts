@@ -44,4 +44,8 @@ export class UserService {
     this.user = null;
     return this.http.delete(`${API_URL}/logout`).subscribe();
   }
+
+  getUserData(token: {}) {
+    return this.http.post<UserInterface>(`${API_URL}/user`, token);
+  }
 }
