@@ -4,6 +4,7 @@ import { CreateComponent } from './create/create.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { DetailsComponent } from './details/details.component';
 import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -11,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     CreateComponent,
     CatalogComponent,
-    DetailsComponent
+    DetailsComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
