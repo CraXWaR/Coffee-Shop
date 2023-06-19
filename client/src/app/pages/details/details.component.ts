@@ -55,11 +55,11 @@ export class DetailsComponent {
 
   onDelete() {
     const id = this.coffee?._id;
-    
+
     let token = localStorage.getItem('token');
     let data = {};
-    data = {'token': token};
-    
+    data = { 'token': token };
+
     this.coffeeService.deleteCoffee(id, data).subscribe({
       next: () => this.router.navigate(['/catalog']),
       error: (err) => {

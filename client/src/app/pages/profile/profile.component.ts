@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { UserInterface } from 'src/app/shared/interfaces/user-interface';
-// import { emailValidator } from 'src/app/shared/validator';
 
 import jwt_decode from 'jwt-decode';
 import { handleError } from 'src/app/shared/errorHandler';
@@ -21,16 +20,8 @@ export class ProfileComponent {
   errors: string | undefined = undefined;
   token: string | null = localStorage.getItem('token');
 
-  constructor(private userService: UserService, private fb: FormBuilder, private router: Router) {
-
+  constructor(private userService: UserService, private router: Router) {
     this.getUserInfo();
-
-    // this.form = this.fb.group({
-    //   username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
-    //   email: ['', [Validators.required, emailValidator]],
-    //   avatarImg: ['', [Validators.required]]
-    // });
-
   }
 
   decodeToken(token: any) {
@@ -60,7 +51,7 @@ export class ProfileComponent {
     const id = decoded._id;
     let value = form.value;
     value.token = this.token;
-    
+
     this.userService.editUser(id, value).subscribe({
       next: () => {
         this.userService.logout();
