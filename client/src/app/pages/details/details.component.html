@@ -48,33 +48,33 @@
             <form #form="ngForm" method="post" (ngSubmit)="onEdit(form)">
               <div class="form-group first">
                 <label for="make" class="mb-2 h5">Make</label>
-                <input type="text" class="form-control mb-2" placeholder="Nescafe" name="make" ngModel #make="ngModel">
+                <input type="text" class="form-control mb-2" name="make" ngModel="{{coffee?.make}}" #make="ngModel">
               </div>
               <div class="form-group first">
                 <label for="type" class="mb-2 h5">Type</label>
-                <input type="text" class="form-control mb-2" placeholder="Espresso" name="type" ngModel #type="ngModel">
+                <input type="text" class="form-control mb-2" name="type" ngModel="{{coffee?.type}}" #type="ngModel">
               </div>
               <div class="form-group last mb-3">
                 <label for="intensity" class="mb-2 h5">Intensity</label>
-                <input type="number" class="form-control mb-2" placeholder="6" name="intensity" ngModel
+                <input type="number" class="form-control mb-2" name="intensity" ngModel="{{coffee?.intensity}}"
                   #intensity="ngModel">
               </div>
               <div class="form-group last mb-3">
                 <label for="description" class="mb-2 h5">Description</label>
-                <input type="text" class="form-control mb-2"
-                  placeholder="Darkly colored, bitter, and slightly acidic..," name="description" ngModel
+                <input type="text" class="form-control mb-2" name="description" ngModel="{{coffee?.description}}"
                   #description="ngModel">
               </div>
               <div class="form-group last mb-3">
                 <label for="price" class="mb-2 h5">Price</label>
-                <input type="number" class="form-control mb-2" placeholder="5$" name="price" ngModel #price="ngModel">
+                <input type="number" class="form-control mb-2" name="price" ngModel="{{coffee?.price}}"
+                  #price="ngModel">
               </div>
               <div class="form-group last mb-3">
                 <label for="imageUrl" class="mb-2 h5">Image</label>
-                <input type="text" class="form-control mb-2" placeholder="https://..." name="imageUrl" ngModel
+                <input type="text" class="form-control mb-2" name="imageUrl" ngModel="{{coffee?.imageUrl}}"
                   #imageUrl="ngModel">
               </div>
-              <input type="submit" value="Create" class="btn btn-block btn-primary">
+              <input type="submit" value="Edit" class="btn btn-block btn-primary">
             </form>
           </div>
         </div>

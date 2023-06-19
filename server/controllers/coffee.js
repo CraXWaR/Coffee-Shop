@@ -91,36 +91,33 @@ router.get('/:id', async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 })
-// AFTER ID, uploader.array('carPhotos')
 router.put('/:id', async (req, res) => {
-    console.log('here')
     const id = req.params.id;
-    console.log(req.body);
-    // const base64 = req.body.base64;
     const data = req.body;
 
     const coffee = await getOneCoffee(id);
+    console.log(coffee);
     try {
-        data.caffeeImages = []
-        if (req?.user._id == coffee.owner._id) {
-            // if (base64) {
-            //     for (let el of base64) {
-            //         const uploaded = await cloudinary.v2.uploader.upload(el, { fetch_format: "auto" });
-            //         let objectToPush =  {
-            //             imageUrl: uploaded.url,
-            //             imageId: uploaded.public_id,
-            //         }
-            //         data.carImages.push(objectToPush)
-            //     }
-            // }else {
-            //     data.caffeeImages.push(data.imageUrl)
-            // }
-            await editCoffee(id, data);
+        await editCoffee(id, data);
             const updatedCoffee = await getOneCoffee(id);
             res.status(200).json(updatedCoffee);
-        } else {
-            throw new Error('You are not the owner!')
-        }
+        // if (req?.user._id == coffee.owner._id) {
+        //     // if (base64) {
+        //     //     for (let el of base64) {
+        //     //         const uploaded = await cloudinary.v2.uploader.upload(el, { fetch_format: "auto" });
+        //     //         let objectToPush =  {
+        //     //             imageUrl: uploaded.url,
+        //     //             imageId: uploaded.public_id,
+        //     //         }
+        //     //         data.carImages.push(objectToPush)
+        //     //     }
+        //     // }else {
+        //     //     data.caffeeImages.push(data.imageUrl)
+        //     // }
+            
+        // } else {
+        //     throw new Error('You are not the owner!')
+        // }
 
     } catch (error) {
         res.status(400).json({ error: error.message });

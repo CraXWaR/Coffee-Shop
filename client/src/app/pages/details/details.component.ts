@@ -47,11 +47,13 @@ export class DetailsComponent {
 
   async onEdit(form: NgForm) {
     const id = this.coffee?._id;
-
+    
     this.coffeeService.editCoffee(id, form.value).subscribe({
       next: (coffee) => {
         this.coffee = coffee;
         this.editMode = false;
+        console.log(this.coffee);
+        
       },
       error: (err) => {
         //TODO err handler
