@@ -23,8 +23,8 @@ export class CoffeeService {
     return this.http.get<CoffeeInterface>(`${API_URL}/cafes/${id}`);
   }
 
-  deleteCoffee(id: string | undefined) {
-    return this.http.delete(`${API_URL}/cafes/${id}`);
+  deleteCoffee(id: string | undefined, data: {}) {
+    return this.http.patch(`${API_URL}/cafes/${id}`, data);
   }
 
   editCoffee(id: string | undefined, data: {}) {

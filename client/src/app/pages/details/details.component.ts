@@ -55,8 +55,12 @@ export class DetailsComponent {
 
   onDelete() {
     const id = this.coffee?._id;
-
-    this.coffeeService.deleteCoffee(id).subscribe({
+    
+    let token = localStorage.getItem('token');
+    let data = {};
+    data = {'token': token};
+    
+    this.coffeeService.deleteCoffee(id, data).subscribe({
       next: () => this.router.navigate(['/catalog']),
       error: (err) => {
         this.errors = handleError(err.error?.error);
@@ -71,7 +75,7 @@ export class DetailsComponent {
     let value = form.value;
     value.token = token;
 
-    this.coffeeService.editCoffee(id, form.value).subscribe({
+    this.coffeeService.editCoffee(id, value).subscribe({
       next: (coffee) => {
         this.coffee = coffee;
         this.editMode = false;

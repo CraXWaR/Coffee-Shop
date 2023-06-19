@@ -105,9 +105,22 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-router.delete('/:id', async (req, res) => {
-    await deleteCoffee(req.params.id);
-    res.status(200).json('Coffee deleted!');
+router.patch('/:id', async (req, res) => {
+    const id = req.params.id;
+    const data = req.body;
+    const coffee = await getOneCoffee(id);
+    try {
+        const token = jwtDecode(data.token);
+        const userId = token._id;
+        if (userId == coffee.owner._id) {
+            await deleteCoffee(req.params.id);
+            res.status(200).json('Coffee deleted!');
+        } else {
+            throw new Error('You are not the owner!')
+        }
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 })
 
 module.exports = router;

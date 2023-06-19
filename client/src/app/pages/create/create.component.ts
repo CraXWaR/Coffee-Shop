@@ -20,7 +20,7 @@ export class CreateComponent {
     let value = form.value;
     value.token = token;
 
-    this.coffeeService.addCoffee(form.value).subscribe({
+    this.coffeeService.addCoffee(value).subscribe({
       next: () => {
         this.router.navigate(['/catalog']);
       },
