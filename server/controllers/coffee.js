@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const { addCoffee, getAllCafes, getOneCoffee, getProfileCafes, editCoffee, deleteCoffee, getTop3Cafes, addToFavourite, getFavouriteCafes, removeFromFavourites } = require('../services/coffee');
+const { addCoffee, getAllCafes, getOneCoffee, getProfileCafes, editCoffee, deleteCoffee, getTop3Cafes, addToCart, getCartCafes, removeFromCart } = require('../services/coffee');
 const { updateCafesOnUser } = require('../services/user');
 const jwtDecode = require('jwt-decode');
 
@@ -37,33 +37,33 @@ router.get('/most', async (req, res) => {
     res.status(200).json(cafes);
 })
 
-router.delete('/favourites/:id', async (req, res) => {
+router.delete('/cart/:id', async (req, res) => {
     try {
         const userId = req.user._id;
         const caffeeId = req.params.id;
-        await removeFromFavourites(userId, caffeeId);
+        await removeFromCart(userId, caffeeId);
         res.status(200).json('Success');
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 })
 
-router.get('/favourites/:id', async (req, res) => {
+router.get('/cart/:id', async (req, res) => {
     try {
         const userId = req.user._id;
         const caffeeId = req.params.id;
-        await addToFavourite(userId, caffeeId);
+        await addToCart(userId, caffeeId);
         res.status(200).json('Success');
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
 })
 
-router.get('/favourite-cafes', async (req, res) => {
+router.get('/cart-cafes', async (req, res) => {
     let userId = req.user._id;
     try {
-        let cafes = await getFavouriteCafes(userId);
-        res.status(200).json(cafes?.getFavouriteCafes);
+        let cafes = await getCartCafes(userId);
+        res.status(200).json(cafes?.getCartCafes);
     } catch (error) {
         console.log(error);
         res.status(400).json({ error: error.message });

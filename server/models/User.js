@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
             ref: 'Coffee'
         }
     ],
-    favouriteCafes: [
+    cart: [
         {
             type: mongoose.Types.ObjectId,
             ref: 'Coffee'

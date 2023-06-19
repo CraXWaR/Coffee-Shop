@@ -34,15 +34,15 @@ const getTop3Cafes = async () => {
     const cafes = await Coffee.find({}).sort({ price: -1 }).limit(3);
     return cafes;
 }
-const addToFavourite = async (userId, coffeeId) => {
+const addToCart = async (userId, coffeeId) => {
     try {
         //Adding coffee to user
         const user = await User.findById(userId);
-        let array = user.favouriteCafes;
+        let array = user.cart;
         array.push(coffeeId);
         console.log(userId);
         console.log(coffeeId);
-        await User.findByIdAndUpdate(userId, { favouriteCafes: array });
+        await User.findByIdAndUpdate(userId, { cart: array });
         //Adding user to coffee
         let coffee = await Coffee.findById(coffeeId);
         let coffeeArray = coffee.addedBy;
@@ -53,16 +53,16 @@ const addToFavourite = async (userId, coffeeId) => {
     }
 
 }
-const getFavouriteCafes = async (userId) => {
-    return await User.findById(userId).populate('favouriteCafes');
+const getCartCafes = async (userId) => {
+    return await User.findById(userId).populate('cart');
 }
-const removeFromFavourites = async (userId, coffeeId) => {
+const removeFromCart = async (userId, coffeeId) => {
     try {
         const user = await User.findById(userId);
-        let userCoffeeArray = user.favouriteCafes;
+        let userCoffeeArray = user.cart;
         let userIndex = userCoffeeArray.indexOf(coffeeId);
         userCoffeeArray.splice(userIndex, 1);
-        await User.findByIdAndUpdate(userId, { favouriteCafes: userCoffeeArray });
+        await User.findByIdAndUpdate(userId, { cart: userCoffeeArray });
 
         const coffee = await Coffee.findById(coffeeId);
         let coffeeUserArray = coffee.addedBy;
@@ -75,9 +75,9 @@ const removeFromFavourites = async (userId, coffeeId) => {
 }
 
 module.exports = {
-    removeFromFavourites,
-    getFavouriteCafes,
-    addToFavourite,
+    removeFromCart,
+    getCartCafes,
+    addToCart,
     getTop3Cafes,
     deleteCoffee,
     editCoffee,
