@@ -96,7 +96,6 @@ router.put('/:id', async (req, res) => {
     const data = req.body;
 
     const coffee = await getOneCoffee(id);
-    console.log(coffee);
     try {
         await editCoffee(id, data);
             const updatedCoffee = await getOneCoffee(id);
