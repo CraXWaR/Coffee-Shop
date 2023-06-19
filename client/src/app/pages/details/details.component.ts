@@ -5,6 +5,7 @@ import { CoffeeService } from 'src/app/services/coffee.service';
 import { CoffeeInterface } from 'src/app/shared/interfaces/coffee-interface';
 
 import jwt_decode from 'jwt-decode';
+import { handleError } from 'src/app/shared/errorHandler';
 
 @Component({
   selector: 'app-details',
@@ -47,7 +48,7 @@ export class DetailsComponent {
         }
       },
       error: (err) => {
-        console.log(err);
+        this.errors = handleError(err.error?.error);
       }
     });
   }
@@ -58,8 +59,7 @@ export class DetailsComponent {
     this.coffeeService.deleteCoffee(id).subscribe({
       next: () => this.router.navigate(['/catalog']),
       error: (err) => {
-        //TODO err handler
-        console.log(err);
+        this.errors = handleError(err.error?.error);
       }
     });
   }
@@ -79,8 +79,7 @@ export class DetailsComponent {
 
       },
       error: (err) => {
-        //TODO err handler
-        console.log(err);
+        this.errors = handleError(err.error?.error);
       }
     });
   }

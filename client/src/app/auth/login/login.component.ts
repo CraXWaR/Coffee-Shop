@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { handleError } from 'src/app/shared/errorHandler';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
   errors: string | undefined = undefined;
 
   constructor(private userService: UserService, private router: Router) { }
@@ -20,8 +20,7 @@ export class LoginComponent {
         this.router.navigate(['/']);
       },
       error: (err) => {
-        //TODO create error handler
-        console.log(err);
+        this.errors = handleError(err.error?.error);
       }
     })
   }
