@@ -22,11 +22,11 @@ export class CatalogComponent {
   getAllCafes() {
     if (!this.token) {
       this.isUser = false;
-    }
+    };
     this.cafes = undefined;
     this.coffeeService.getAllCafes().subscribe({
       next: (cafes) => {
-        this.cafes = cafes; 
+        this.cafes = cafes;
         this.cafesLength = cafes.length || 0;
         if (cafes.length == 0) {
           this.isEmpty = true;

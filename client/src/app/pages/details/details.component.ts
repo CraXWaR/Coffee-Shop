@@ -36,7 +36,7 @@ export class DetailsComponent {
     const id = this.activatedRoute.snapshot.params['id'];
     const decoded = this.decodeToken(this.token) as { _id: string };
     let userId = decoded._id;
-    
+
     this.coffeeService.getOneCoffee(id).subscribe({
       next: (coffee) => {
         this.coffee = coffee;
@@ -66,13 +66,17 @@ export class DetailsComponent {
 
   async onEdit(form: NgForm) {
     const id = this.coffee?._id;
-    
+
+    let token = localStorage.getItem('token');
+    let value = form.value;
+    value.token = token;
+
     this.coffeeService.editCoffee(id, form.value).subscribe({
       next: (coffee) => {
         this.coffee = coffee;
         this.editMode = false;
         console.log(this.coffee);
-        
+
       },
       error: (err) => {
         //TODO err handler
