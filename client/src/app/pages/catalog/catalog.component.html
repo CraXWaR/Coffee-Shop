@@ -9,7 +9,8 @@
                 <div class="col-lg-3">
                     <div class="position-relative mb-5">
                         <img class="img-fluid rounded-3 mb-3" src="{{coffee.imageUrl}}">
-                        <a class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="/details/{{coffee._id}}">{{coffee.make}}</a>
+                        <a class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="/details/{{coffee._id}}" *ngIf="isUser">{{coffee.make}}</a>
+                        <a class="h3 fw-bolder text-decoration-none link-dark stretched-link" *ngIf="!isUser">{{coffee.make}}</a>
                     </div>
                 </div>
             </ng-container>

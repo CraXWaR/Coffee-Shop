@@ -12,12 +12,17 @@ export class CatalogComponent {
   cafes: CoffeeInterface[] | undefined;
   cafesLength: any;
   isEmpty: boolean = false;
+  isUser: boolean = true;
+  token: string | null = localStorage.getItem('token');
 
   constructor(private coffeeService: CoffeeService) {
     this.getAllCafes();
   }
 
   getAllCafes() {
+    if (!this.token) {
+      this.isUser = false;
+    }
     this.cafes = undefined;
     this.coffeeService.getAllCafes().subscribe({
       next: (cafes) => {
