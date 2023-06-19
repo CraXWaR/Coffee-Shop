@@ -48,4 +48,8 @@ export class UserService {
   getUserData(token: {}) {
     return this.http.post<UserInterface>(`${API_URL}/user`, token);
   }
+
+  editUser(id: string | undefined, data: {}) {
+    return this.http.put<UserInterface>(`${API_URL}/user/${id}`, data);
+  }
 }

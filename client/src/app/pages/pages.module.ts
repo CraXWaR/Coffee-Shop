@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CreateComponent } from './create/create.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { DetailsComponent } from './details/details.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 
 
@@ -17,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     FormsModule
   ]
 })

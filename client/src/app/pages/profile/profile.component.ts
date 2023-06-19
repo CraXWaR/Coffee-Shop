@@ -24,7 +24,7 @@ export class ProfileComponent {
     this.form = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
       email: ['', [Validators.required, emailValidator]],
-      avatar: ['', [Validators.required]]
+      avatarImg: ['', [Validators.required]]
     });
 
   }
@@ -41,4 +41,25 @@ export class ProfileComponent {
       }
     });
   }
+
+  onEditUser() {
+    const id = this.user?._id;
+    let token = localStorage.getItem('token');
+    let value = this.form.value;
+    value.token = token;
+
+    this.userService.editUser(id, value).subscribe({
+      next: () => {
+        this.userService.logout();
+        this.router.navigate(['login']);
+      },
+      error: (err) => {
+        this.errors = errorHandler(err.error?.error);
+      }
+    });
+  }
 }
+function errorHandler(error: any): string | undefined {
+  throw new Error('Function not implemented.');
+}
+
