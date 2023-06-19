@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CoffeeService } from 'src/app/services/coffee.service';
 import { CoffeeInterface } from 'src/app/shared/interfaces/coffee-interface';
 
+import jwt_decode from 'jwt-decode';
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -14,18 +16,35 @@ export class DetailsComponent {
   coffee: CoffeeInterface | undefined;
   errors: Object | undefined;
   editMode: boolean = false;
+  isOwner: boolean = false;
+  token: string | null = localStorage.getItem('token');
 
   constructor(private coffeeService: CoffeeService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.getCoffee();
   }
 
+  decodeToken(token: any) {
+    if (token) {
+      const decodedToken = jwt_decode(token);
+      return decodedToken;
+    }
+    return;
+  }
+
   getCoffee(): void {
     this.coffee = undefined;
     const id = this.activatedRoute.snapshot.params['id'];
-    //TODO add if user is owner
+    const decoded = this.decodeToken(this.token) as { _id: string };
+    let userId = decoded._id;
+    
     this.coffeeService.getOneCoffee(id).subscribe({
       next: (coffee) => {
         this.coffee = coffee;
+        if (userId == coffee.owner._id) {
+          this.isOwner = true;
+        } else {
+          this.isOwner = false;
+        }
       },
       error: (err) => {
         console.log(err);
