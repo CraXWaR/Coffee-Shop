@@ -108,11 +108,16 @@ router.put('/:id', async (req, res) => {
 router.patch('/:id', async (req, res) => {
     const id = req.params.id;
     const data = req.body;
-    const coffee = await getOneCoffee(id);
     try {
         const token = jwtDecode(data.token);
         const userId = token._id;
-        if (userId == coffee.owner._id) {
+        const user = await User.findById(userId);
+        console.log(user.cafes);
+        if (user.cafes.includes(id)) {
+            let cafesArray = user.cafes;
+            let deletionIndex = cafesArray.indexOf(id)
+            cafesArray.splice(deletionIndex, 1)
+            await User.findByIdAndUpdate(userId, { cafes: cafesArray })
             await deleteCoffee(req.params.id);
             res.status(200).json('Coffee deleted!');
         } else {
