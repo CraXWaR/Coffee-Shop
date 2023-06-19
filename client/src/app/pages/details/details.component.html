@@ -22,7 +22,7 @@
         <li>Price: {{coffee?.price}}</li>
       </ul>
       <div class="btns">
-        <button type="button" class="button btn btn-warning btn-rounded">Edit</button>
+        <button type="button" class="button btn btn-warning btn-rounded" (click)="editMode=true">Edit</button>
         <button type="button" class="button btn btn-danger btn-rounded" (click)="onDelete()">Delete</button>
       </div>
     </div>

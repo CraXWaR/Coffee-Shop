@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoffeeService } from 'src/app/services/coffee.service';
 import { CoffeeInterface } from 'src/app/shared/interfaces/coffee-interface';
@@ -12,6 +13,7 @@ export class DetailsComponent {
 
   coffee: CoffeeInterface | undefined;
   errors: Object | undefined;
+  editMode: boolean = false;
 
   constructor(private coffeeService: CoffeeService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.getCoffee();
@@ -43,5 +45,18 @@ export class DetailsComponent {
     });
   }
 
-  //TODO create edit
+  async onEdit(form: NgForm) {
+    const id = this.coffee?._id;
+
+    this.coffeeService.editCoffee(id, form.value).subscribe({
+      next: (coffee) => {
+        this.coffee = coffee;
+        this.editMode = false;
+      },
+      error: (err) => {
+        //TODO err handler
+        console.log(err);
+      }
+    });
+  }
 }
