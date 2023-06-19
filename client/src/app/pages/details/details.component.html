@@ -1,32 +1,84 @@
-<div class="container">
+<!-- details html -->
 
-  <!-- Portfolio Item Heading -->
-  <h1 class="my-4">Coffee:
-    <small>{{coffee?.make}}</small>
-  </h1>
+<ng-container *ngIf="!editMode">
+  <div class="container">
 
-  <!-- Portfolio Item Row -->
-  <div class="row">
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">Coffee:
+      <small>{{coffee?.make}}</small>
+    </h1>
 
-    <div class="col-md-8">
-      <img class="img-fluid" src="{{coffee?.imageUrl}}" alt="">
-    </div>
+    <!-- Portfolio Item Row -->
+    <div class="row">
 
-    <div class="col-md-4">
-      <h3 class="my-3">Coffee Description</h3>
-      <p>{{coffee?.description}}</p>
-      <h3 class="my-3">Coffee Details</h3>
-      <ul>
-        <li>Type: {{coffee?.type}}</li>
-        <li>Intensity: {{coffee?.intensity}}</li>
-        <li>Price: {{coffee?.price}}</li>
-      </ul>
-      <div class="btns">
-        <button type="button" class="button btn btn-warning btn-rounded" (click)="editMode=true">Edit</button>
-        <button type="button" class="button btn btn-danger btn-rounded" (click)="onDelete()">Delete</button>
+      <div class="col-md-8">
+        <img class="img-fluid" src="{{coffee?.imageUrl}}" alt="">
+      </div>
+
+      <div class="col-md-4">
+        <h3 class="my-3">Coffee Description</h3>
+        <p>{{coffee?.description}}</p>
+        <h3 class="my-3">Coffee Details</h3>
+        <ul>
+          <li>Type: {{coffee?.type}}</li>
+          <li>Intensity: {{coffee?.intensity}}</li>
+          <li>Price: {{coffee?.price}}</li>
+        </ul>
+        <div class="btns">
+          <button type="button" class="button btn btn-warning btn-rounded" (click)="editMode=true">Edit</button>
+          <button type="button" class="button btn btn-danger btn-rounded" (click)="onDelete()">Delete</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</ng-container>
 
-<!-- TODO add edit html -->
+<!-- edit -->
+
+<ng-container *ngIf="editMode">
+  <div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2 image pr-2"></div>
+    <div class="contents order-2 order-md-1">
+
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7">
+            <h3>Create <strong>Coffee</strong></h3>
+            <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+            <form #form="ngForm" method="post" (ngSubmit)="onEdit(form)">
+              <div class="form-group first">
+                <label for="make" class="mb-2 h5">Make</label>
+                <input type="text" class="form-control mb-2" placeholder="Nescafe" name="make" ngModel #make="ngModel">
+              </div>
+              <div class="form-group first">
+                <label for="type" class="mb-2 h5">Type</label>
+                <input type="text" class="form-control mb-2" placeholder="Espresso" name="type" ngModel #type="ngModel">
+              </div>
+              <div class="form-group last mb-3">
+                <label for="intensity" class="mb-2 h5">Intensity</label>
+                <input type="number" class="form-control mb-2" placeholder="6" name="intensity" ngModel
+                  #intensity="ngModel">
+              </div>
+              <div class="form-group last mb-3">
+                <label for="description" class="mb-2 h5">Description</label>
+                <input type="text" class="form-control mb-2"
+                  placeholder="Darkly colored, bitter, and slightly acidic..," name="description" ngModel
+                  #description="ngModel">
+              </div>
+              <div class="form-group last mb-3">
+                <label for="price" class="mb-2 h5">Price</label>
+                <input type="number" class="form-control mb-2" placeholder="5$" name="price" ngModel #price="ngModel">
+              </div>
+              <div class="form-group last mb-3">
+                <label for="imageUrl" class="mb-2 h5">Image</label>
+                <input type="text" class="form-control mb-2" placeholder="https://..." name="imageUrl" ngModel
+                  #imageUrl="ngModel">
+              </div>
+              <input type="submit" value="Create" class="btn btn-block btn-primary">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
