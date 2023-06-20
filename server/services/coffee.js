@@ -39,6 +39,7 @@ const addToCart = async (userId, coffeeId) => {
         //Adding coffee to user
         const user = await User.findById(userId);
         let array = user.cart;
+        console.log(array);
         array.push(coffeeId);
         console.log(userId);
         console.log(coffeeId);

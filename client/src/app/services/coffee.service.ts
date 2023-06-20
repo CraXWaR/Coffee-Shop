@@ -30,4 +30,8 @@ export class CoffeeService {
   editCoffee(id: string | undefined, data: {}) {
     return this.http.put<CoffeeInterface>(`${API_URL}/cafes/${id}`, data);
   }
+
+  addToCart(id: string | undefined, data: {}) {
+    return this.http.get(`${API_URL}/cafes/cart/${id}`, data);
+  }
 }

@@ -87,4 +87,19 @@ export class DetailsComponent {
       }
     });
   }
+
+  addToCart() {
+    const id = this.coffee?._id;
+
+    let token = localStorage.getItem('token');
+    let data = {};
+    data = { 'token': token };
+
+    this.coffeeService.addToCart(id, data).subscribe({
+      next: () => {
+        console.log('done');
+        
+      }
+    });
+  }
 }
