@@ -79,15 +79,6 @@ const logout = async (token) => {
 }
 
 const updateUser = async (id, data) => {
-    const existingEmail = await User.findOne({ email: data.email });
-    const existingUsername = await User.findOne({ username: data.username });
-
-    if (existingEmail) {
-        throw new Error('Email already exists!');
-    } else if (existingUsername) {
-        throw new Error('Username already exists!');
-    }
-    
     try {
         return await User.findByIdAndUpdate(id, { ...data }, { runValidators: true });
     } catch (error) {
