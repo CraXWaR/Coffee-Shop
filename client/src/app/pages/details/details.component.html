@@ -30,7 +30,8 @@
             <button type="button" class="button btn btn-danger btn-rounded" (click)="onDelete()">Delete</button>
           </ng-container>
           <ng-container *ngIf="!isOwner">
-            <button type="button" class="button btn btn-success btn-rounded" (click)="addToCart()">Add to cart</button>
+            <button type="button" class="button btn btn-success btn-rounded" (click)="addToCart()" *ngIf="!alreadyInCart">Add to cart</button>
+            <h3 class="pt-5 text-success" *ngIf="alreadyInCart">This item is already in cart!</h3>
           </ng-container>
         </div>
       </div>
