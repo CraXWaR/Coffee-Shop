@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { UserInterface } from 'src/app/shared/interfaces/user-interface';
@@ -37,7 +37,7 @@ export class ProfileComponent {
 
     this.userService.getUserData({ token }).subscribe({
       next: (user) => {
-        this.user = user
+        this.user = user;
       },
       error: (err) => {
         console.log(err);

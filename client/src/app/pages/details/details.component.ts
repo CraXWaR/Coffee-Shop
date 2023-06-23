@@ -7,6 +7,7 @@ import { CoffeeInterface } from 'src/app/shared/interfaces/coffee-interface';
 import jwt_decode from 'jwt-decode';
 import { handleError } from 'src/app/shared/errorHandler';
 import { UserService } from 'src/app/services/user.service';
+import { UserInterface } from 'src/app/shared/interfaces/user-interface';
 
 @Component({
   selector: 'app-details',
@@ -21,6 +22,7 @@ export class DetailsComponent {
   isOwner: boolean = false;
   token: string | null = localStorage.getItem('token');
   alreadyInCart : boolean = false;
+  user: UserInterface | undefined;
 
   constructor(private coffeeService: CoffeeService, private activatedRoute: ActivatedRoute, private router: Router, private userService: UserService) {
     this.getCoffee();
@@ -44,6 +46,9 @@ export class DetailsComponent {
       next: (coffee) => {
         this.coffee = coffee;
         this.alreadyInCart = coffee.addedBy.some((user) => user.username == this.userService.user?.username);
+        console.log(this.userService.user);
+        
+        
         if (userId == coffee.owner._id) {
           this.isOwner = true;
         } else {
@@ -101,6 +106,19 @@ export class DetailsComponent {
     this.coffeeService.addToCart(id, data).subscribe({
       next: () => {
         this.alreadyInCart = true;
+      }
+    });
+  }
+
+  getUserInfo() {
+    let token = localStorage.getItem('token');
+
+    this.userService.getUserData({ token }).subscribe({
+      next: (user) => {
+        this.user = user;
+      },
+      error: (err) => {
+        console.log(err);
       }
     });
   }
