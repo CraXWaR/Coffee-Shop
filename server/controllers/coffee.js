@@ -48,11 +48,12 @@ router.delete('/cart/:id', async (req, res) => {
     }
 })
 
-router.get('/cart/:id', async (req, res) => {
+router.post('/cart/:id', async (req, res) => {
+    const data = req.body.token;
+    let token = jwtDecode(data);
     try {
-        const userId = req.user._id;
+        const userId = token._id;
         const coffeeId = req.params.id;
-        console.log(req.body);
         await addToCart(userId, coffeeId);
         res.status(200).json('Success');
     } catch (error) {

@@ -32,6 +32,6 @@ export class CoffeeService {
   }
 
   addToCart(id: string | undefined, data: {}) {
-    return this.http.get(`${API_URL}/cafes/cart/${id}`, data);
+    return this.http.post(`${API_URL}/cafes/cart/${id}`, data);
   }
 }

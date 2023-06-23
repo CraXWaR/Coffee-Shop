@@ -19,6 +19,7 @@ export class DetailsComponent {
   editMode: boolean = false;
   isOwner: boolean = false;
   token: string | null = localStorage.getItem('token');
+  alreadyInCart : boolean = false;
 
   constructor(private coffeeService: CoffeeService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.getCoffee();
@@ -97,8 +98,7 @@ export class DetailsComponent {
 
     this.coffeeService.addToCart(id, data).subscribe({
       next: () => {
-        console.log('done');
-        
+        this.alreadyInCart = true;
       }
     });
   }
