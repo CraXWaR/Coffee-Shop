@@ -1,10 +1,10 @@
 # Coffee-Shop
-Coffee-Shop app made for educational purpose, created with Angular as front-End, Node.js as Back-End and MongoDB as database.
+Coffee-Shop app to practice my coding skills, created with Angular as front-End, Node.js as Back-End and MongoDB as database.
 
 ## General information
 * The main purpose of the app is to view/add cafes for sale.
 * Guests are only able to see Home Page and All Cafes.
-* Logged in users have access to Add Cofee and Profile information, as well they have the ability to Edit/Delete their own posts.
+* Logged in users have access to Add Coffee and Profile information, as well they have the ability to Edit/Delete their own posts.
 
 ## Technologies 
 * Client
