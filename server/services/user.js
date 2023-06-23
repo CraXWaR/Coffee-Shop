@@ -1,15 +1,15 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const server = require('../environment')
+const server = require('../environment');
 const User = require('../models/User');
 const blacklisted = require('../models/Blacklisted');
 
 const validateToken = (token) => {
     try {
-        const data = jwt.verify(token, server.SECRET_KEY)
-        return data
+        const data = jwt.verify(token, server.SECRET_KEY);
+        return data;
     } catch (error) {
-        throw new Error('Invalid cookie token!')
+        throw new Error('Invalid cookie token!');
     }
 }
 
@@ -21,8 +21,8 @@ const createAccessToken = (user) => {
         avatarImg: user.avatarImg,
         cafes: user.cafes,
         cart: user.cart
-    }
-    const accessToken = jwt.sign(payload, server.SECRET_KEY)
+    };
+    const accessToken = jwt.sign(payload, server.SECRET_KEY);
     return {
         username: user.username,
         email: user.email,
@@ -35,31 +35,31 @@ const createAccessToken = (user) => {
 }
 
 const register = async (data) => {
-    const existingEmail = await User.findOne({ email: data.email })
-    const existingUsername = await User.findOne({ username: data.username })
+    const existingEmail = await User.findOne({ email: data.email });
+    const existingUsername = await User.findOne({ username: data.username });
 
     if (existingEmail) {
-        throw new Error('Email already exists!')
+        throw new Error('Email already exists!');
     } else if (existingUsername) {
-        throw new Error('Username already exists!')
+        throw new Error('Username already exists!');
     }
-    const user = await User.create(data)
-    return createAccessToken(user)
+    const user = await User.create(data);
+    return createAccessToken(user);
 }
 
 const login = async (email, password) => {
     const user = await User.findOne({ email });
     if (!user) {
-        throw new Error('Invalid email or password!')
+        throw new Error('Invalid email or password!');
     }
-    const isUser = await bcrypt.compare(password, user.password)
+    const isUser = await bcrypt.compare(password, user.password);
     if (isUser) {
-        let userToReturn = await createAccessToken(user)
+        let userToReturn = createAccessToken(user);
         userToReturn.avatarImg = user.avatarImg;
         userToReturn.imageId = user.imageId;
-        return userToReturn
+        return userToReturn;
     } else {
-        throw new Error('Invalid email or password!')
+        throw new Error('Invalid email or password!');
     }
 }
 
@@ -79,6 +79,15 @@ const logout = async (token) => {
 }
 
 const updateUser = async (id, data) => {
+    const existingEmail = await User.findOne({ email: data.email });
+    const existingUsername = await User.findOne({ username: data.username });
+
+    if (existingEmail) {
+        throw new Error('Email already exists!');
+    } else if (existingUsername) {
+        throw new Error('Username already exists!');
+    }
+    
     try {
         return await User.findByIdAndUpdate(id, { ...data }, { runValidators: true });
     } catch (error) {
