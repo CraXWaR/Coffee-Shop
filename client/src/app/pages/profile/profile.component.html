@@ -38,27 +38,36 @@
                                     name="username" #username="ngModel" required minlength="4" maxlength="10">
                             </div>
                             <ng-container *ngIf="username.touched">
-                                <p class="alert alert-danger text-dark h6" *ngIf="username.errors?.['required']"><strong>Error!</strong> Username is required!</p>
-                                <p class="alert alert-danger text-dark h6" *ngIf="username.errors?.['maxlength']"><strong>Error!</strong> You cannot add more than 10 characters!</p>
-                                <p class="alert alert-danger text-dark h6" *ngIf="username.errors?.['minlength']"><strong>Error!</strong> You should have at least 4 characters!</p>
+                                <p class="alert alert-danger text-dark h6" *ngIf="username.errors?.['required']">
+                                    <strong>Error!</strong> Username is required!</p>
+                                <p class="alert alert-danger text-dark h6" *ngIf="username.errors?.['maxlength']">
+                                    <strong>Error!</strong> You cannot add more than 10 characters!</p>
+                                <p class="alert alert-danger text-dark h6" *ngIf="username.errors?.['minlength']">
+                                    <strong>Error!</strong> You should have at least 4 characters!</p>
                             </ng-container>
                             <div class="form-group first">
                                 <label for="email" class="mb-2 h5">Email</label>
                                 <input type="text" class="form-control mb-2" ngModel="{{user?.email}}" id="email"
-                                    name="email" #email="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+                                    name="email" #email="ngModel" required
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                             </div>
                             <ng-container *ngIf="email.touched">
-                                <p class="alert alert-danger text-dark h6" *ngIf="email.errors?.['required']"><strong>Error!</strong> Email is required!</p>
-                                <p class="alert alert-danger text-dark h6" *ngIf="email.errors?.['pattern']"><strong>Error!</strong> Email must be valid!</p>
+                                <p class="alert alert-danger text-dark h6" *ngIf="email.errors?.['required']">
+                                    <strong>Error!</strong> Email is required!</p>
+                                <p class="alert alert-danger text-dark h6" *ngIf="email.errors?.['pattern']">
+                                    <strong>Error!</strong> Email must be valid!</p>
                             </ng-container>
                             <div class="form-group last mb-3">
                                 <label for="avatarImg" class="mb-2 h5">Avatar</label>
                                 <input type="text" class="form-control mb-2" ngModel="{{user?.avatarImg}}"
-                                    id="avatarImg" name="avatarImg" #avatarImg="ngModel" required pattern="^https?://.+">
+                                    id="avatarImg" name="avatarImg" #avatarImg="ngModel" required
+                                    pattern="^https?://.+">
                             </div>
                             <ng-container *ngIf="avatarImg.touched">
-                                <p class="alert alert-danger text-dark h6" *ngIf="avatarImg.errors?.['required']"><strong>Error!</strong> Avatar is required!</p>
-                                <p class="alert alert-danger text-dark h6" *ngIf="avatarImg.errors?.['pattern']"><strong>Error!</strong> You must give valid URL!</p>
+                                <p class="alert alert-danger text-dark h6" *ngIf="avatarImg.errors?.['required']">
+                                    <strong>Error!</strong> Avatar is required!</p>
+                                <p class="alert alert-danger text-dark h6" *ngIf="avatarImg.errors?.['pattern']">
+                                    <strong>Error!</strong> You must give valid URL!</p>
                             </ng-container>
                             <input type="submit" value="Edit" class="btn btn-block btn-primary">
                         </form>

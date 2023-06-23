@@ -10,12 +10,13 @@
                     <form #form="ngForm" (ngSubmit)="login(form)" method="post">
                         <div class="form-group first">
                             <label for="email" class="mb-2 h5">Email</label>
-                            <input type="text" class="form-control mb-2" placeholder="your-email@gmail.com"
-                                name="email" ngModel #email="ngModel">
+                            <input type="text" class="form-control mb-2" placeholder="your-email@gmail.com" name="email"
+                                ngModel #email="ngModel">
                         </div>
                         <div class="form-group last mb-3">
                             <label for="password" class="mb-2 h5">Password</label>
-                            <input type="password" class="form-control mb-2" placeholder="Your Password" name="password" ngModel #password="ngModel">
+                            <input type="password" class="form-control mb-2" placeholder="Your Password" name="password"
+                                ngModel #password="ngModel">
                         </div>
                         <ng-container *ngIf="errors">
                             <p class="alert alert-danger text-dark h6"><strong>Error!</strong> {{errors}}</p>

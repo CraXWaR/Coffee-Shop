@@ -30,7 +30,8 @@
             <button type="button" class="button btn btn-danger btn-rounded" (click)="onDelete()">Delete</button>
           </ng-container>
           <ng-container *ngIf="!isOwner">
-            <button type="button" class="button btn btn-success btn-rounded" (click)="addToCart()" *ngIf="!alreadyInCart">Add to cart</button>
+            <button type="button" class="button btn btn-success btn-rounded" (click)="addToCart()"
+              *ngIf="!alreadyInCart">Add to cart</button>
             <h3 class="pt-5 text-success" *ngIf="alreadyInCart">This item is already in cart!</h3>
           </ng-container>
         </div>
@@ -53,22 +54,29 @@
             <form #form="ngForm" method="post" (ngSubmit)="onEdit(form)">
               <div class="form-group first">
                 <label for="make" class="mb-2 h5">Make</label>
-                <input type="text" class="form-control mb-2" name="make" ngModel="{{coffee?.make}}" #make="ngModel" required minlength="3" maxlength="15">
+                <input type="text" class="form-control mb-2" name="make" ngModel="{{coffee?.make}}" #make="ngModel"
+                  required minlength="3" maxlength="15">
               </div>
               <ng-container *ngIf="make.touched">
                 <p class="alert alert-danger text-dark h6" *ngIf="make.errors?.['required']">Make is required!</p>
-                <p class="alert alert-danger text-dark h6" *ngIf="make.errors?.['maxlength']">You cannot add more than 15 characters!</p>
-                <p class="alert alert-danger text-dark h6" *ngIf="make.errors?.['minlength']">You should have at least 3 characters!</p>
-            </ng-container>
+                <p class="alert alert-danger text-dark h6" *ngIf="make.errors?.['maxlength']">You cannot add more than
+                  15 characters!</p>
+                <p class="alert alert-danger text-dark h6" *ngIf="make.errors?.['minlength']">You should have at least 3
+                  characters!</p>
+              </ng-container>
               <div class="form-group first">
                 <label for="type" class="mb-2 h5">Type</label>
-                <input type="text" class="form-control mb-2" name="type" ngModel="{{coffee?.type}}" #type="ngModel" required minlength="2" maxlength="10">
+                <input type="text" class="form-control mb-2" name="type" ngModel="{{coffee?.type}}" #type="ngModel"
+                  required minlength="2" maxlength="10">
               </div>
               <ng-container *ngIf="type.touched">
-                <p class="alert alert-danger text-dark h6" *ngIf="type.errors?.['required']"><strong>Error!</strong> Type is required!</p>
-                <p class="alert alert-danger text-dark h6" *ngIf="type.errors?.['maxlength']"><strong>Error!</strong> You cannot add more than 10 characters!</p>
-                <p class="alert alert-danger text-dark h6" *ngIf="type.errors?.['minlength']"><strong>Error!</strong> You should have at least 2 characters!</p>
-            </ng-container>
+                <p class="alert alert-danger text-dark h6" *ngIf="type.errors?.['required']"><strong>Error!</strong>
+                  Type is required!</p>
+                <p class="alert alert-danger text-dark h6" *ngIf="type.errors?.['maxlength']"><strong>Error!</strong>
+                  You cannot add more than 10 characters!</p>
+                <p class="alert alert-danger text-dark h6" *ngIf="type.errors?.['minlength']"><strong>Error!</strong>
+                  You should have at least 2 characters!</p>
+              </ng-container>
               <div class="form-group last mb-3">
                 <label for="intensity" class="mb-2 h5">Intensity</label>
                 <input type="number" class="form-control mb-2" name="intensity" ngModel="{{coffee?.intensity}}"
@@ -76,15 +84,15 @@
               </div>
               <ng-container *ngIf="intensity.touched">
                 <div class="alert alert-danger text-dark h6" *ngIf="intensity.errors?.['required']">
-                    <strong>Error!</strong> Coffee intensity is required!
+                  <strong>Error!</strong> Coffee intensity is required!
                 </div>
                 <div class="alert alert-danger text-dark h6" *ngIf="intensity.errors?.['min']">
-                    <strong>Error!</strong> Coffee intensity can't be less than 1!
+                  <strong>Error!</strong> Coffee intensity can't be less than 1!
                 </div>
                 <div class="alert alert-danger text-dark h6" *ngIf="intensity.errors?.['max']">
-                    <strong>Error!</strong> Coffee intensity can't be more than 10!
+                  <strong>Error!</strong> Coffee intensity can't be more than 10!
                 </div>
-            </ng-container>
+              </ng-container>
               <div class="form-group last mb-3">
                 <label for="description" class="mb-2 h5">Description</label>
                 <input type="text" class="form-control mb-2" name="description" ngModel="{{coffee?.description}}"
@@ -92,40 +100,42 @@
               </div>
               <ng-container *ngIf="description.touched">
                 <div class="alert alert-danger text-dark h6" *ngIf="description.errors?.['required']">
-                    <strong>Error!</strong> Coffee description is required!
+                  <strong>Error!</strong> Coffee description is required!
                 </div>
                 <div class="alert alert-danger text-dark h6" *ngIf="description.errors?.['minlength']">
-                    <strong>Error!</strong> Coffee description should have at least 10 characters!
+                  <strong>Error!</strong> Coffee description should have at least 10 characters!
                 </div>
                 <div class="alert alert-danger text-dark h6" *ngIf="description.errors?.['maxlength']">
-                    <strong>Error!</strong> Coffee description can't be more than 500 characters!
+                  <strong>Error!</strong> Coffee description can't be more than 500 characters!
                 </div>
-            </ng-container>
+              </ng-container>
               <div class="form-group last mb-3">
                 <label for="price" class="mb-2 h5">Price</label>
-                <input type="number" class="form-control mb-2" name="price" ngModel="{{coffee?.price}}"
-                  #price="ngModel" required min="1" max="200">
+                <input type="number" class="form-control mb-2" name="price" ngModel="{{coffee?.price}}" #price="ngModel"
+                  required min="1" max="200">
               </div>
               <ng-container *ngIf="price.touched">
                 <div class="alert alert-danger text-dark h6" *ngIf="price.errors?.['required']">
-                    <strong>Error!</strong> Coffee price is required!
+                  <strong>Error!</strong> Coffee price is required!
                 </div>
                 <div class="alert alert-danger text-dark h6" *ngIf="price.errors?.['min']">
-                    <strong>Error!</strong> Coffee should be more expensive than 1 dolars!
+                  <strong>Error!</strong> Coffee should be more expensive than 1 dolars!
                 </div>
                 <div class="alert alert-danger text-dark h6" *ngIf="price.errors?.['max']">
-                    <strong>Error!</strong> Coffee can't be more expensive than 200 dolars!
+                  <strong>Error!</strong> Coffee can't be more expensive than 200 dolars!
                 </div>
-            </ng-container>
+              </ng-container>
               <div class="form-group last mb-3">
                 <label for="imageUrl" class="mb-2 h5">Image</label>
                 <input type="text" class="form-control mb-2" name="imageUrl" ngModel="{{coffee?.imageUrl}}"
                   #imageUrl="ngModel" required pattern="^https?://.+">
               </div>
               <ng-container *ngIf="imageUrl.touched">
-                <p class="alert alert-danger text-dark h6" *ngIf="imageUrl.errors?.['required']"><strong>Error!</strong> Coffee image is required!</p>
-                <p class="alert alert-danger text-dark h6" *ngIf="imageUrl.errors?.['pattern']"><strong>Error!</strong> You must give valid URL!</p>
-            </ng-container>
+                <p class="alert alert-danger text-dark h6" *ngIf="imageUrl.errors?.['required']"><strong>Error!</strong>
+                  Coffee image is required!</p>
+                <p class="alert alert-danger text-dark h6" *ngIf="imageUrl.errors?.['pattern']"><strong>Error!</strong>
+                  You must give valid URL!</p>
+              </ng-container>
               <input type="submit" value="Edit" class="btn btn-block btn-primary">
             </form>
           </div>
