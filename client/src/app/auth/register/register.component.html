@@ -14,9 +14,9 @@
                                 name="username" formControlName="username">
                         </div>
                         <ng-container *ngIf="form.get('username')?.touched">
-                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('username')?.errors?.['required']">Username is required!</p>
-                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('username')?.errors?.['minlength']">Username should have 4 characters!</p>
-                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('username')?.errors?.['maxlength']">Username shouldn't have more than 10 characters!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('username')?.errors?.['required']"><strong>Error!</strong> Username is required!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('username')?.errors?.['minlength']"><strong>Error!</strong> Username should have 4 characters!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('username')?.errors?.['maxlength']"><strong>Error!</strong> Username shouldn't have more than 10 characters!</p>
                         </ng-container>
                         <div class="form-group first">
                             <label for="email" class="mb-2 h5">Email</label>
@@ -24,8 +24,8 @@
                                 name="email" formControlName="email">
                         </div>
                         <ng-container *ngIf="form.get('email')?.touched">
-                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
-                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('email')?.errors?.['invalidEmail']">Email should be valid!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('email')?.errors?.['required']"><strong>Error!</strong> Email is required!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('email')?.errors?.['invalidEmail']"><strong>Error!</strong> Email should be valid!</p>
                         </ng-container>
                         <div class="form-group last mb-3">
                             <label for="password" class="mb-2 h5">Password</label>
@@ -33,9 +33,9 @@
                                 name="password" formControlName="password">
                         </div>
                         <ng-container *ngIf="form.get('password')?.touched">
-                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
-                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('password')?.errors?.['minlength']">Password should have more than 3 characters!</p>
-                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('password')?.errors?.['maxlength']">Password should have less 6 characters!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('password')?.errors?.['required']"><strong>Error!</strong> Password is required!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('password')?.errors?.['minlength']"><strong>Error!</strong> Password should have more than 3 characters!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('password')?.errors?.['maxlength']"><strong>Error!</strong> Password should have less 6 characters!</p>
                         </ng-container>
                         <div class="form-group last mb-3">
                             <label for="password" class="mb-2 h5">Repeat Password</label>
@@ -43,8 +43,8 @@
                                 id="rePassword" name="rePassword" formControlName="rePassword">
                         </div>
                         <ng-container *ngIf="form.get('rePass')?.touched">
-                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('rePassword')?.errors?.['required']">Repeat-password is required!</p>
-                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('rePassword')?.errors?.['invalidPasswords']">Passwords must be equal!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('rePassword')?.errors?.['required']"><strong>Error!</strong> Repeat-password is required!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('rePassword')?.errors?.['invalidPasswords']"><strong>Error!</strong> Passwords must be equal!</p>
                         </ng-container>
                         <div class="form-group last mb-3">
                             <label for="avatarImg" class="mb-2 h5">Avatar</label>
@@ -53,9 +53,9 @@
                                 pattern="^https?://.+">
                         </div>
                         <ng-container *ngIf="form.get('avatarImg')?.touched">
-                            <div class="alert alert-danger text-dark h6" *ngIf="form.get('avatarImg')?.errors?.['required']">Avatar is
+                            <div class="alert alert-danger text-dark h6" *ngIf="form.get('avatarImg')?.errors?.['required']"><strong>Error!</strong> Avatar is
                                 required!</div>
-                            <div class="alert alert-danger text-dark h6" *ngIf="form.get('avatarImg')?.errors?.['pattern']">You must give a
+                            <div class="alert alert-danger text-dark h6" *ngIf="form.get('avatarImg')?.errors?.['pattern']"><strong>Error!</strong> You must give a
                                 URL!
                                 characters!</div>
                         </ng-container>
