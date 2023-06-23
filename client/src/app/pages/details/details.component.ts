@@ -22,7 +22,6 @@ export class DetailsComponent {
   isOwner: boolean = false;
   token: string | null = localStorage.getItem('token');
   alreadyInCart : boolean = false;
-  user: UserInterface | undefined;
 
   constructor(private coffeeService: CoffeeService, private activatedRoute: ActivatedRoute, private router: Router, private userService: UserService) {
     this.getCoffee();
@@ -37,6 +36,7 @@ export class DetailsComponent {
   }
 
   getCoffee(): void {
+  
     this.coffee = undefined;
     const id = this.activatedRoute.snapshot.params['id'];
     const decoded = this.decodeToken(this.token) as { _id: string };
@@ -45,9 +45,7 @@ export class DetailsComponent {
     this.coffeeService.getOneCoffee(id).subscribe({
       next: (coffee) => {
         this.coffee = coffee;
-        this.alreadyInCart = coffee.addedBy.some((user) => user.username == this.userService.user?.username);
-        console.log(this.userService.user);
-        
+        this.alreadyInCart = coffee.addedBy.some((user) => user._id == userId);
         
         if (userId == coffee.owner._id) {
           this.isOwner = true;
@@ -87,7 +85,6 @@ export class DetailsComponent {
       next: (coffee) => {
         this.coffee = coffee;
         this.editMode = false;
-        console.log(this.coffee);
 
       },
       error: (err) => {
@@ -106,19 +103,6 @@ export class DetailsComponent {
     this.coffeeService.addToCart(id, data).subscribe({
       next: () => {
         this.alreadyInCart = true;
-      }
-    });
-  }
-
-  getUserInfo() {
-    let token = localStorage.getItem('token');
-
-    this.userService.getUserData({ token }).subscribe({
-      next: (user) => {
-        this.user = user;
-      },
-      error: (err) => {
-        console.log(err);
       }
     });
   }

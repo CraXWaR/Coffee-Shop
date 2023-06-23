@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { UserInterface } from '../shared/interfaces/user-interface';
+import { CoffeeInterface } from '../shared/interfaces/coffee-interface';
 
 const API_URL = 'http://localhost:3030';
 

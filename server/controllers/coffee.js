@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
         console.log(error);
         res.status(400).json({ error: error.message });
     }
-    res.end()
+    res.end();
 })
 
 router.get('/', async (req, res) => {
@@ -59,18 +59,7 @@ router.post('/cart/:id', async (req, res) => {
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
-})
-
-router.get('/cart-cafes', async (req, res) => {
-    let userId = req.user._id;
-    try {
-        let cafes = await getCartCafes(userId);
-        res.status(200).json(cafes?.getCartCafes);
-    } catch (error) {
-        console.log(error);
-        res.status(400).json({ error: error.message });
-    }
-})
+});
 
 router.get('/:id', async (req, res) => {
     try {
@@ -82,10 +71,10 @@ router.get('/:id', async (req, res) => {
             throw new Error('Invalid coffee ID!');
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
         res.status(400).json({ error: error.message });
     }
-})
+});
 
 router.put('/:id', async (req, res) => {
     const id = req.params.id;
@@ -99,13 +88,13 @@ router.put('/:id', async (req, res) => {
             const updatedCoffee = await getOneCoffee(id);
             res.status(200).json(updatedCoffee);
         } else {
-            throw new Error('You are not the owner!')
+            throw new Error('You are not the owner!');
         }
 
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
-})
+});
 
 router.patch('/:id', async (req, res) => {
     const id = req.params.id;
