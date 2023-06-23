@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CoffeeService } from 'src/app/services/coffee.service';
+import { handleError } from 'src/app/shared/errorHandler';
 
 @Component({
   selector: 'app-create',
@@ -25,7 +26,7 @@ export class CreateComponent {
         this.router.navigate(['/catalog']);
       },
       error: (err) => {
-        console.log(err);
+        this.errors = handleError(err.error?.error);
       }
     });
   }
