@@ -13,26 +13,52 @@
                             <input type="text" class="form-control mb-2" placeholder="Your Username" id="username"
                                 name="username" formControlName="username">
                         </div>
+                        <ng-container *ngIf="form.get('username')?.touched">
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('username')?.errors?.['required']">Username is required!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('username')?.errors?.['minlength']">Username should have 4 characters!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('username')?.errors?.['maxlength']">Username shouldn't have more than 10 characters!</p>
+                        </ng-container>
                         <div class="form-group first">
                             <label for="email" class="mb-2 h5">Email</label>
                             <input type="text" class="form-control mb-2" placeholder="your-email@gmail.com" id="email"
                                 name="email" formControlName="email">
                         </div>
+                        <ng-container *ngIf="form.get('email')?.touched">
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('email')?.errors?.['invalidEmail']">Email should be valid!</p>
+                        </ng-container>
                         <div class="form-group last mb-3">
                             <label for="password" class="mb-2 h5">Password</label>
                             <input type="password" class="form-control mb-2" placeholder="Your Password" id="password"
                                 name="password" formControlName="password">
                         </div>
+                        <ng-container *ngIf="form.get('password')?.touched">
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('password')?.errors?.['minlength']">Password should have more than 3 characters!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('password')?.errors?.['maxlength']">Password should have less 6 characters!</p>
+                        </ng-container>
                         <div class="form-group last mb-3">
                             <label for="password" class="mb-2 h5">Repeat Password</label>
                             <input type="password" class="form-control mb-2" placeholder="Repeat Password"
                                 id="rePassword" name="rePassword" formControlName="rePassword">
                         </div>
+                        <ng-container *ngIf="form.get('rePass')?.touched">
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('rePassword')?.errors?.['required']">Repeat-password is required!</p>
+                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('rePassword')?.errors?.['invalidPasswords']">Passwords must be equal!</p>
+                        </ng-container>
                         <div class="form-group last mb-3">
                             <label for="avatarImg" class="mb-2 h5">Avatar</label>
                             <input type="text" class="form-control mb-2" placeholder="https://..." id="avatarImg"
-                                name="avatarImg" formControlName="avatarImg">
+                                name="avatarImg" formControlName="avatarImg" required
+                                pattern="^https?://.+">
                         </div>
+                        <ng-container *ngIf="form.get('avatarImg')?.touched">
+                            <div class="alert alert-danger text-dark h6" *ngIf="form.get('avatarImg')?.errors?.['required']">Avatar is
+                                required!</div>
+                            <div class="alert alert-danger text-dark h6" *ngIf="form.get('avatarImg')?.errors?.['pattern']">You must give a
+                                URL!
+                                characters!</div>
+                        </ng-container>
                         <div class="d-flex mb-4 align-items-center">
                             <span>Already have an account? <a href="/login"> Login here!</a></span>
                         </div>
