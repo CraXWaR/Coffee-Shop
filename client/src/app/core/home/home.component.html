@@ -18,3 +18,32 @@
         </div>
     </div>
 </div>
+
+<div class="most-song d-flex justify-content-center">
+    <div class="container bg-light rounded">
+        <div class="h2 font-weight-bold text-center py-3">Most Expensive Songs</div>
+        <div class="row" *ngIf="cafes">
+            <ng-container *ngFor="let coffee of cafes">
+                <div class="col-lg-4 col-md-6 my-lg-0 my-3 p-2">
+                    <div class="box bg-white">
+                        <div class="d-flex align-items-center">
+                            <div
+                                class="rounded-circle mx-3 text-center d-flex align-items-center justify-content-center">
+                                <img class="img" src="{{coffee.imageUrl}}">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <b>{{coffee.make}}</b>
+                                <a href="/cafes/{{coffee._id}}">
+                                    <p class="text-muted">Details</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="row" *ngIf="isEmpty">
+            <div class="h2 font-weight-bold text-center py-3">No cafes in Data Base</div>
+        </div>
+    </div>
+</div>
