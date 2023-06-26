@@ -5,7 +5,6 @@
 .box {
     padding: 40px 30px;
     transition: all .4s ease-in-out;
-    cursor: pointer;
     border-color: black;
 }
 
