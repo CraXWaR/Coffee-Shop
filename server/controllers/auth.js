@@ -41,7 +41,7 @@ router.post('/user', async (req, res) => {
         const email = token.email;
         const avatarImg = token.avatarImg;
         const cafes = token.cafes;
-        const cart = token.cart
+        const cart = token.cart;
 
         res.status(200).json({ "username": username, "email": email, "avatarImg": avatarImg, "cafes": { cafes }, "cart": { cart } });
         res.end();
