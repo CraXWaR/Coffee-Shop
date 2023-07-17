@@ -1,47 +1,41 @@
-<div class="container">
-    <h1>Cart</h1>
-    <div class="row">
-      <div class="col">
-        <h3>Product 1</h3>
-        <p>Price: $10</p>
-        <button class="btn btn-primary" (click)="openModal()">Buy</button>
-      </div>
-      <div class="col">
-        <h3>Product 2</h3>
-        <p>Price: $20</p>
-        <button class="btn btn-primary" (click)="openModal()">Buy</button>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="buyModalLabel">Confirmation</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
-            <span aria-hidden="true">&times;</span>
-          </button>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="center mb-4">Shopping Cart</h1>
+      <div class="cart-item">
+        <div class="row">
+          <div class="col-md-2">
+            <img src="" alt="Product 1" class="img-fluid" />
+          </div>
+          <div class="col-md-6">
+            <h4>Product Name 1</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          <div class="col-md-2">
+            <p>$19.99</p>
+          </div>
+          <div class="col-md-2 center">
+            <button class="btn btn-danger">Remove</button>
+          </div>
         </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="name">Name:</label>
-              <input type="text" class="form-control" id="name" name="name">
-            </div>
-            <div class="form-group">
-              <label for="card">Debit Card:</label>
-              <input type="text" class="form-control" id="card" name="card">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" (click)="removeProduct()">Remove</button>
-          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
-          <button type="button" class="btn btn-primary" (click)="buyProduct()">Buy</button>
+      </div>
+      <div class="cart-item">
+        <div class="row">
+          <div class="col-md-2">
+            <img src="" alt="Product 2" class="img-fluid" />
+          </div>
+          <div class="col-md-6">
+            <h4>Product Name 2</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          <div class="col-md-2">
+            <p>$29.99</p>
+          </div>
+          <div class="col-md-2 center">
+            <button class="btn btn-danger">Remove</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
