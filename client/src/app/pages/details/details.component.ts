@@ -6,24 +6,25 @@ import { CoffeeInterface } from 'src/app/shared/interfaces/coffee-interface';
 
 import jwt_decode from 'jwt-decode';
 import { handleError } from 'src/app/shared/errorHandler';
-import { UserService } from 'src/app/services/user.service';
-import { UserInterface } from 'src/app/shared/interfaces/user-interface';
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent {
-
   coffee: CoffeeInterface | undefined;
   errors: Object | undefined;
   editMode: boolean = false;
   isOwner: boolean = false;
   token: string | null = localStorage.getItem('token');
-  alreadyInCart : boolean = false;
+  alreadyInCart: boolean = false;
 
-  constructor(private coffeeService: CoffeeService, private activatedRoute: ActivatedRoute, private router: Router, private userService: UserService) {
+  constructor(
+    private coffeeService: CoffeeService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
     this.getCoffee();
   }
 
@@ -36,7 +37,6 @@ export class DetailsComponent {
   }
 
   getCoffee(): void {
-  
     this.coffee = undefined;
     const id = this.activatedRoute.snapshot.params['id'];
     const decoded = this.decodeToken(this.token) as { _id: string };
@@ -46,7 +46,7 @@ export class DetailsComponent {
       next: (coffee) => {
         this.coffee = coffee;
         this.alreadyInCart = coffee.addedBy.some((user) => user._id == userId);
-        
+
         if (userId == coffee.owner._id) {
           this.isOwner = true;
         } else {
@@ -55,7 +55,7 @@ export class DetailsComponent {
       },
       error: (err) => {
         this.errors = handleError(err.error?.error);
-      }
+      },
     });
   }
 
@@ -64,13 +64,13 @@ export class DetailsComponent {
 
     let token = localStorage.getItem('token');
     let data = {};
-    data = { 'token': token };
+    data = { token: token };
 
     this.coffeeService.deleteCoffee(id, data).subscribe({
       next: () => this.router.navigate(['/catalog']),
       error: (err) => {
         this.errors = handleError(err.error?.error);
-      }
+      },
     });
   }
 
@@ -85,11 +85,10 @@ export class DetailsComponent {
       next: (coffee) => {
         this.coffee = coffee;
         this.editMode = false;
-
       },
       error: (err) => {
         this.errors = handleError(err.error?.error);
-      }
+      },
     });
   }
 
@@ -98,12 +97,12 @@ export class DetailsComponent {
 
     let token = localStorage.getItem('token');
     let data = {};
-    data = { 'token': token };
+    data = { token: token };
 
     this.coffeeService.addToCart(id, data).subscribe({
       next: () => {
         this.alreadyInCart = true;
-      }
+      },
     });
   }
 }

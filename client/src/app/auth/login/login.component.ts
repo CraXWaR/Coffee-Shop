@@ -7,12 +7,12 @@ import { handleError } from 'src/app/shared/errorHandler';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   errors: string | undefined = undefined;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {}
 
   login(form: NgForm): void {
     this.userService.login(form.value).subscribe({
@@ -21,7 +21,7 @@ export class LoginComponent {
       },
       error: (err) => {
         this.errors = handleError(err.error?.error);
-      }
-    })
+      },
+    });
   }
 }

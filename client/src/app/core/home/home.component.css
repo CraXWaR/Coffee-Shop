@@ -1,44 +1,40 @@
 .most-coffee {
-    margin-top: 4rem;
+  margin-top: 4rem;
 }
 
 .box {
-    padding: 40px 30px;
-    transition: all .4s ease-in-out;
-    border-color: black;
+  padding: 40px 30px;
+  transition: all 0.4s ease-in-out;
+  border-color: black;
 }
 
 .box:hover {
-    box-shadow: 2px 2px 10px #a5a5a5;
-    transform: scale(1.03);
+  box-shadow: 2px 2px 10px #a5a5a5;
+  transform: scale(1.03);
 }
 
 a {
-    width: fit-content;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
+  width: fit-content;
+  text-decoration: none;
 }
 
 .img {
-    object-fit: contain;
-    width: 63px;
-    height: 63px;
-    border-radius: 50%;
+  object-fit: contain;
+  width: 63px;
+  height: 63px;
+  border-radius: 50%;
 }
 
 p.text-muted {
-    margin: 0;
-    font-size: 0.9rem;
+  margin: 0;
+  font-size: 0.9rem;
 }
 
 b {
-    font-size: 1.12rem;
+  font-size: 1.12rem;
 }
 
 .rounded-circle {
-    width: 60px;
-    height: 60px;
+  width: 60px;
+  height: 60px;
 }

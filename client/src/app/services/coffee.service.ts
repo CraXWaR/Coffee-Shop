@@ -5,11 +5,10 @@ import { CoffeeInterface } from '../shared/interfaces/coffee-interface';
 const API_URL = 'http://localhost:3030';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CoffeeService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   addCoffee(data: any) {
     return this.http.post(`${API_URL}/cafes`, { data });

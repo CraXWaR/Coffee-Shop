@@ -5,7 +5,7 @@
 }
 
 .navbar-brand {
-  margin-left: .5rem;
+  margin-left: 0.5rem;
   font-weight: bold;
   font-size: 1.5rem;
 }
@@ -14,7 +14,7 @@
   cursor: default;
 }
 
-.navbar-nav>li>a {
+.navbar-nav > li > a {
   color: #555;
   font-size: 1.1rem;
   font-weight: 500;
@@ -24,29 +24,29 @@
   margin-right: 10px;
 }
 
-.navbar-nav>li>a:hover {
+.navbar-nav > li > a:hover {
   background-color: #007bff;
   color: #fff;
 }
 
-.navbar-nav>li.active>a {
+.navbar-nav > li.active > a {
   background-color: #007bff;
   color: #fff;
 }
 
-.navbar-nav:last-child>li:last-child>a {
+.navbar-nav:last-child > li:last-child > a {
   margin-right: 0;
 }
 
 /* Styles for the right side links */
-.navbar-nav:last-child>li>a {
+.navbar-nav:last-child > li > a {
   margin-right: 10px;
   border: 1px solid #007bff;
   background-color: #007bff;
   color: #fff;
 }
 
-.navbar-nav:last-child>li>a:hover {
+.navbar-nav:last-child > li > a:hover {
   background-color: #fff;
   color: #007bff;
 }
@@ -78,13 +78,13 @@ a:hover {
     font-size: 1.2rem;
   }
 
-  .navbar-nav>li>a {
+  .navbar-nav > li > a {
     font-size: 1rem;
     padding: 10px;
     margin-right: 0;
   }
 
-  .navbar-nav>li:last-child>a {
+  .navbar-nav > li:last-child > a {
     margin-bottom: 10px;
     width: fit-content;
   }

@@ -1,47 +1,62 @@
 <div class="bg-dark py-5">
-    <div class="container px-5">
-        <div class="row gx-5 align-items-center justify-content-center">
-            <div class="col-lg-8 col-xl-7 col-xxl-6">
-                <div class="my-5 text-center text-xl-start">
-                    <h1 class="display-5 fw-bolder text-white mb-2">Coffee Shop Dobrich</h1>
-                    <p class="lead fw-normal text-white-50 mb-5">Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Aspernatur quia molestiae inventore doloribus nihil placeat tempora ad sed odio aliquam
-                        amet eaque maxime, adipisci alias saepe fugiat enim, eos in.</p>
-                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                        <!-- TODO mby add food catalog<a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a> -->
-                        <a class="btn btn-outline-light btn-lg px-4" href="/catalog">Catalog</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5"
-                    src="/assets/coffee-shop.jpg" alt="Coffee Shop" /></div>
+  <div class="container px-5">
+    <div class="row gx-5 align-items-center justify-content-center">
+      <div class="col-lg-8 col-xl-7 col-xxl-6">
+        <div class="my-5 text-center text-xl-start">
+          <h1 class="display-5 fw-bolder text-white mb-2">
+            Coffee Shop Dobrich
+          </h1>
+          <p class="lead fw-normal text-white-50 mb-5">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
+            quia molestiae inventore doloribus nihil placeat tempora ad sed odio
+            aliquam amet eaque maxime, adipisci alias saepe fugiat enim, eos in.
+          </p>
+          <div
+            class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start"
+          >
+            <a class="btn btn-outline-light btn-lg px-4" href="/catalog"
+              >Catalog</a
+            >
+          </div>
         </div>
+      </div>
+      <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+        <img
+          class="img-fluid rounded-3 my-5"
+          src="/assets/coffee-shop.jpg"
+          alt="Coffee Shop"
+        />
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="most-coffee d-flex justify-content-center">
-    <div class="container bg-light rounded">
-        <div class="h2 font-weight-bold text-center py-3">Most Expensive Songs</div>
-        <div class="row" *ngIf="cafes">
-            <ng-container *ngFor="let coffee of cafes">
-                <div class="col-lg-4 col-md-6 my-lg-0 my-3 p-2">
-                    <div class="box bg-white">
-                        <div class="d-flex align-items-center">
-                            <div
-                                class="rounded-circle mx-3 text-center d-flex align-items-center justify-content-center">
-                                <img class="img" src="{{coffee.imageUrl}}">
-                            </div>
-                            <div class="d-flex flex-column">
-                                <b>{{coffee.make}}</b>
-                                <p class="text-muted">{{coffee.type}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </ng-container>
+  <div class="container bg-light rounded">
+    <div class="h2 font-weight-bold text-center py-3">Most Expensive Songs</div>
+    <div class="row" *ngIf="cafes">
+      <ng-container *ngFor="let coffee of cafes">
+        <div class="col-lg-4 col-md-6 my-lg-0 my-3 p-2">
+          <div class="box bg-white">
+            <div class="d-flex align-items-center">
+              <div
+                class="rounded-circle mx-3 text-center d-flex align-items-center justify-content-center"
+              >
+                <img class="img" src="{{ coffee.imageUrl }}" />
+              </div>
+              <div class="d-flex flex-column">
+                <b>{{ coffee.make }}</b>
+                <p class="text-muted">{{ coffee.type }}</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="row" *ngIf="isEmpty">
-            <div class="h2 font-weight-bold text-center py-3">No cafes in Data Base</div>
-        </div>
+      </ng-container>
     </div>
+    <div class="row" *ngIf="isEmpty">
+      <div class="h2 font-weight-bold text-center py-3">
+        No cafes in Data Base
+      </div>
+    </div>
+  </div>
 </div>

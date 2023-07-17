@@ -5,10 +5,9 @@ import { CoffeeInterface } from 'src/app/shared/interfaces/coffee-interface';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-
   cafes: CoffeeInterface[] | undefined;
   isEmpty: boolean = true;
 
@@ -24,7 +23,7 @@ export class HomeComponent {
           this.cafes = value;
         }
       },
-      error: (err) => console.log(err)
-    })
+      error: (err) => console.log(err),
+    });
   }
 }

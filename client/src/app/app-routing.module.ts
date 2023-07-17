@@ -15,62 +15,62 @@ const routes: Routes = [
     pathMatch: 'full',
     component: HomeComponent,
     data: {
-      title: 'Home Page'
-    }
+      title: 'Home Page',
+    },
   },
   {
     path: 'login',
     component: LoginComponent,
     data: {
-      title: 'Login Page'
-    }
+      title: 'Login Page',
+    },
   },
   {
     path: 'register',
     component: RegisterComponent,
     data: {
-      title: 'Register Page'
-    }
+      title: 'Register Page',
+    },
   },
   {
     path: 'catalog',
     component: CatalogComponent,
     data: {
-      title: 'Catalog Page'
-    }
+      title: 'Catalog Page',
+    },
   },
   {
     path: 'create',
     component: CreateComponent,
     data: {
-      title: 'Create Page'
-    }
+      title: 'Create Page',
+    },
   },
   {
     path: 'details/:id',
     component: DetailsComponent,
     data: {
-      title: 'Details Page'
-    }
+      title: 'Details Page',
+    },
   },
   {
     path: 'profile',
     component: ProfileComponent,
     data: {
-      title: 'Profile Page'
-    }
+      title: 'Profile Page',
+    },
   },
   {
     path: 'cart',
     component: CartComponent,
     data: {
-      title: 'Your Cart'
-    }
-  }
+      title: 'Your Cart',
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,25 +1,36 @@
 <section class="py-5">
-    <div class="container px-1 my-5">
-        <div class="text-center mb-5">
-            <h1 class="fw-bolder">Coffee Catalog</h1>
-            <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        </div>
-        <div class="row gx-5" *ngIf="cafes">
-            <ng-container *ngFor="let coffee of cafes">
-                <div class="col-lg-3">
-                    <div class="position-relative mb-5">
-                        <img class="img-fluid rounded-3 mb-3" src="{{coffee.imageUrl}}">
-                        <a class="h3 fw-bolder text-decoration-none link-dark stretched-link"
-                            href="/details/{{coffee._id}}" *ngIf="isUser">{{coffee.make}}</a>
-                        <a class="h3 fw-bolder text-decoration-none link-dark stretched-link"
-                            *ngIf="!isUser">{{coffee.make}}</a>
-                    </div>
-                </div>
-            </ng-container>
-        </div>
-        <div class="text-center mt-5" *ngIf="isEmpty">
-            <h1 class="fw-bolder">There are no Cafes in DataBase</h1>
-            <p class="lead fw-normal text-muted mb-0"><a href="/create">Be the first to add Coffee!</a></p>
-        </div>
+  <div class="container px-1 my-5">
+    <div class="text-center mb-5">
+      <h1 class="fw-bolder">Coffee Catalog</h1>
+      <p class="lead fw-normal text-muted mb-0">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </p>
     </div>
+    <div class="row gx-5" *ngIf="cafes">
+      <ng-container *ngFor="let coffee of cafes">
+        <div class="col-lg-3">
+          <div class="position-relative mb-5">
+            <img class="img-fluid rounded-3 mb-3" src="{{ coffee.imageUrl }}" />
+            <a
+              class="h3 fw-bolder text-decoration-none link-dark stretched-link"
+              href="/details/{{ coffee._id }}"
+              *ngIf="isUser"
+              >{{ coffee.make }}</a
+            >
+            <a
+              class="h3 fw-bolder text-decoration-none link-dark stretched-link"
+              *ngIf="!isUser"
+              >{{ coffee.make }}</a
+            >
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="text-center mt-5" *ngIf="isEmpty">
+      <h1 class="fw-bolder">There are no Cafes in DataBase</h1>
+      <p class="lead fw-normal text-muted mb-0">
+        <a href="/create">Be the first to add Coffee!</a>
+      </p>
+    </div>
+  </div>
 </section>

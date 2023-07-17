@@ -5,21 +5,20 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-
   token: string | null = localStorage.getItem('token');
 
   get isLoggedIn(): boolean {
     if (localStorage.getItem('token')) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
   }
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {}
 
   onLogout() {
     this.userService.logout();

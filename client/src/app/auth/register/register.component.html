@@ -1,92 +1,170 @@
 <div class="d-lg-flex half">
-    <div class="bg order-1 order-md-2 image pr-2"></div>
-    <div class="contents order-2 order-md-1">
-
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-7">
-                    <h3>Register to <strong>CoffeeShop</strong></h3>
-                    <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
-                    <form [formGroup]="form" method="post" (ngSubmit)="register()">
-                        <div class="form-group first">
-                            <label for="username" class="mb-2 h5">Username</label>
-                            <input type="text" class="form-control mb-2" placeholder="Your Username" id="username"
-                                name="username" formControlName="username">
-                        </div>
-                        <ng-container *ngIf="form.get('username')?.touched">
-                            <p class="alert alert-danger text-dark h6"
-                                *ngIf="form.get('username')?.errors?.['required']"><strong>Error!</strong> Username is
-                                required!</p>
-                            <p class="alert alert-danger text-dark h6"
-                                *ngIf="form.get('username')?.errors?.['minlength']"><strong>Error!</strong> Username
-                                should have 4 characters!</p>
-                            <p class="alert alert-danger text-dark h6"
-                                *ngIf="form.get('username')?.errors?.['maxlength']"><strong>Error!</strong> Username
-                                shouldn't have more than 10 characters!</p>
-                        </ng-container>
-                        <div class="form-group first">
-                            <label for="email" class="mb-2 h5">Email</label>
-                            <input type="text" class="form-control mb-2" placeholder="your-email@gmail.com" id="email"
-                                name="email" formControlName="email">
-                        </div>
-                        <ng-container *ngIf="form.get('email')?.touched">
-                            <p class="alert alert-danger text-dark h6" *ngIf="form.get('email')?.errors?.['required']">
-                                <strong>Error!</strong> Email is required!</p>
-                            <p class="alert alert-danger text-dark h6"
-                                *ngIf="form.get('email')?.errors?.['invalidEmail']"><strong>Error!</strong> Email should
-                                be valid!</p>
-                        </ng-container>
-                        <div class="form-group last mb-3">
-                            <label for="password" class="mb-2 h5">Password</label>
-                            <input type="password" class="form-control mb-2" placeholder="Your Password" id="password"
-                                name="password" formControlName="password">
-                        </div>
-                        <ng-container *ngIf="form.get('password')?.touched">
-                            <p class="alert alert-danger text-dark h6"
-                                *ngIf="form.get('password')?.errors?.['required']"><strong>Error!</strong> Password is
-                                required!</p>
-                            <p class="alert alert-danger text-dark h6"
-                                *ngIf="form.get('password')?.errors?.['minlength']"><strong>Error!</strong> Password
-                                should have more than 3 characters!</p>
-                            <p class="alert alert-danger text-dark h6"
-                                *ngIf="form.get('password')?.errors?.['maxlength']"><strong>Error!</strong> Password
-                                should have less 6 characters!</p>
-                        </ng-container>
-                        <div class="form-group last mb-3">
-                            <label for="password" class="mb-2 h5">Repeat Password</label>
-                            <input type="password" class="form-control mb-2" placeholder="Repeat Password"
-                                id="rePassword" name="rePassword" formControlName="rePassword">
-                        </div>
-                        <ng-container *ngIf="form.get('rePass')?.touched">
-                            <p class="alert alert-danger text-dark h6"
-                                *ngIf="form.get('rePassword')?.errors?.['required']"><strong>Error!</strong>
-                                Repeat-password is required!</p>
-                            <p class="alert alert-danger text-dark h6"
-                                *ngIf="form.get('rePassword')?.errors?.['invalidPasswords']"><strong>Error!</strong>
-                                Passwords must be equal!</p>
-                        </ng-container>
-                        <div class="form-group last mb-3">
-                            <label for="avatarImg" class="mb-2 h5">Avatar</label>
-                            <input type="text" class="form-control mb-2" placeholder="https://..." id="avatarImg"
-                                name="avatarImg" formControlName="avatarImg" required pattern="^https?://.+">
-                        </div>
-                        <ng-container *ngIf="form.get('avatarImg')?.touched">
-                            <div class="alert alert-danger text-dark h6"
-                                *ngIf="form.get('avatarImg')?.errors?.['required']"><strong>Error!</strong> Avatar is
-                                required!</div>
-                            <div class="alert alert-danger text-dark h6"
-                                *ngIf="form.get('avatarImg')?.errors?.['pattern']"><strong>Error!</strong> You must give
-                                a
-                                URL!
-                                characters!</div>
-                        </ng-container>
-                        <div class="d-flex mb-4 align-items-center">
-                            <span>Already have an account? <a href="/login"> Login here!</a></span>
-                        </div>
-                        <input type="submit" value="Register" class="btn btn-block btn-primary">
-                    </form>
-                </div>
+  <div class="bg order-1 order-md-2 image pr-2"></div>
+  <div class="contents order-2 order-md-1">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-7">
+          <h3>Register to <strong>CoffeeShop</strong></h3>
+          <p class="mb-4">
+            Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur
+            adipisicing.
+          </p>
+          <form [formGroup]="form" method="post" (ngSubmit)="register()">
+            <div class="form-group first">
+              <label for="username" class="mb-2 h5">Username</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                placeholder="Your Username"
+                id="username"
+                name="username"
+                formControlName="username"
+              />
             </div>
+            <ng-container *ngIf="form.get('username')?.touched">
+              <p
+                class="alert alert-danger text-dark h6"
+                *ngIf="form.get('username')?.errors?.['required']"
+              >
+                <strong>Error!</strong> Username is required!
+              </p>
+              <p
+                class="alert alert-danger text-dark h6"
+                *ngIf="form.get('username')?.errors?.['minlength']"
+              >
+                <strong>Error!</strong> Username should have 4 characters!
+              </p>
+              <p
+                class="alert alert-danger text-dark h6"
+                *ngIf="form.get('username')?.errors?.['maxlength']"
+              >
+                <strong>Error!</strong> Username shouldn't have more than 10
+                characters!
+              </p>
+            </ng-container>
+            <div class="form-group first">
+              <label for="email" class="mb-2 h5">Email</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                placeholder="your-email@gmail.com"
+                id="email"
+                name="email"
+                formControlName="email"
+              />
+            </div>
+            <ng-container *ngIf="form.get('email')?.touched">
+              <p
+                class="alert alert-danger text-dark h6"
+                *ngIf="form.get('email')?.errors?.['required']"
+              >
+                <strong>Error!</strong> Email is required!
+              </p>
+              <p
+                class="alert alert-danger text-dark h6"
+                *ngIf="form.get('email')?.errors?.['invalidEmail']"
+              >
+                <strong>Error!</strong> Email should be valid!
+              </p>
+            </ng-container>
+            <div class="form-group last mb-3">
+              <label for="password" class="mb-2 h5">Password</label>
+              <input
+                type="password"
+                class="form-control mb-2"
+                placeholder="Your Password"
+                id="password"
+                name="password"
+                formControlName="password"
+              />
+            </div>
+            <ng-container *ngIf="form.get('password')?.touched">
+              <p
+                class="alert alert-danger text-dark h6"
+                *ngIf="form.get('password')?.errors?.['required']"
+              >
+                <strong>Error!</strong> Password is required!
+              </p>
+              <p
+                class="alert alert-danger text-dark h6"
+                *ngIf="form.get('password')?.errors?.['minlength']"
+              >
+                <strong>Error!</strong> Password should have more than 3
+                characters!
+              </p>
+              <p
+                class="alert alert-danger text-dark h6"
+                *ngIf="form.get('password')?.errors?.['maxlength']"
+              >
+                <strong>Error!</strong> Password should have less 6 characters!
+              </p>
+            </ng-container>
+            <div class="form-group last mb-3">
+              <label for="password" class="mb-2 h5">Repeat Password</label>
+              <input
+                type="password"
+                class="form-control mb-2"
+                placeholder="Repeat Password"
+                id="rePassword"
+                name="rePassword"
+                formControlName="rePassword"
+              />
+            </div>
+            <ng-container *ngIf="form.get('rePass')?.touched">
+              <p
+                class="alert alert-danger text-dark h6"
+                *ngIf="form.get('rePassword')?.errors?.['required']"
+              >
+                <strong>Error!</strong> Repeat-password is required!
+              </p>
+              <p
+                class="alert alert-danger text-dark h6"
+                *ngIf="form.get('rePassword')?.errors?.['invalidPasswords']"
+              >
+                <strong>Error!</strong> Passwords must be equal!
+              </p>
+            </ng-container>
+            <div class="form-group last mb-3">
+              <label for="avatarImg" class="mb-2 h5">Avatar</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                placeholder="https://..."
+                id="avatarImg"
+                name="avatarImg"
+                formControlName="avatarImg"
+                required
+                pattern="^https?://.+"
+              />
+            </div>
+            <ng-container *ngIf="form.get('avatarImg')?.touched">
+              <div
+                class="alert alert-danger text-dark h6"
+                *ngIf="form.get('avatarImg')?.errors?.['required']"
+              >
+                <strong>Error!</strong> Avatar is required!
+              </div>
+              <div
+                class="alert alert-danger text-dark h6"
+                *ngIf="form.get('avatarImg')?.errors?.['pattern']"
+              >
+                <strong>Error!</strong> You must give a URL! characters!
+              </div>
+            </ng-container>
+            <div class="d-flex mb-4 align-items-center">
+              <span
+                >Already have an account?
+                <a href="/login"> Login here!</a></span
+              >
+            </div>
+            <input
+              type="submit"
+              value="Register"
+              class="btn btn-block btn-primary"
+            />
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 </div>

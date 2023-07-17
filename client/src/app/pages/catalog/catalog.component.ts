@@ -5,10 +5,9 @@ import { CoffeeInterface } from 'src/app/shared/interfaces/coffee-interface';
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.css']
+  styleUrls: ['./catalog.component.css'],
 })
 export class CatalogComponent {
-
   cafes: CoffeeInterface[] | undefined;
   cafesLength: any;
   isEmpty: boolean = false;
@@ -22,7 +21,7 @@ export class CatalogComponent {
   getAllCafes() {
     if (!this.token) {
       this.isUser = false;
-    };
+    }
     this.cafes = undefined;
     this.coffeeService.getAllCafes().subscribe({
       next: (cafes) => {
@@ -31,7 +30,7 @@ export class CatalogComponent {
         if (cafes.length == 0) {
           this.isEmpty = true;
         }
-      }
-    })
+      },
+    });
   }
 }

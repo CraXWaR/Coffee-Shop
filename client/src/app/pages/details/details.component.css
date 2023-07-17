@@ -26,7 +26,7 @@
 /* edit css */
 
 .image {
-  background-image: url('/assets/Coffee-Chemex.jpg');
+  background-image: url("/assets/Coffee-Chemex.jpg");
   height: 89vh;
 }
 
@@ -51,9 +51,9 @@ h6,
 }
 
 a {
-  -webkit-transition: .3s all ease;
-  -o-transition: .3s all ease;
-  transition: .3s all ease;
+  -webkit-transition: 0.3s all ease;
+  -o-transition: 0.3s all ease;
+  transition: 0.3s all ease;
 }
 
 a:hover {
@@ -69,7 +69,7 @@ h2 {
 }
 
 .half,
-.half .container>.row {
+.half .container > .row {
   height: 89vh;
   min-height: 700px;
 }
@@ -90,7 +90,6 @@ h2 {
 }
 
 @media (max-width: 1199.98px) {
-
   .half .contents,
   .half .bg {
     width: 100%;

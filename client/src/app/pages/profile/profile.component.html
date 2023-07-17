@@ -1,79 +1,140 @@
 <!-- profile page -->
 
 <ng-container *ngIf="!onEdit">
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <img src="{{user?.avatarImg}}" alt="Avatar" class="rounded-circle mb-3"
-                            style="width: 150px; height: 150px;">
-                        <h5 class="card-title">Username: {{user?.username}}</h5>
-                        <p class="card-text">Email: {{user?.email}}</p>
-                        <a class="btn btn-primary" (click)="onEdit = true">Edit</a>
-                    </div>
-                </div>
-            </div>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <img
+              src="{{ user?.avatarImg }}"
+              alt="Avatar"
+              class="rounded-circle mb-3"
+              style="width: 150px; height: 150px"
+            />
+            <h5 class="card-title">Username: {{ user?.username }}</h5>
+            <p class="card-text">Email: {{ user?.email }}</p>
+            <a class="btn btn-primary" (click)="onEdit = true">Edit</a>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </ng-container>
 
 <!-- edit form -->
 
 <ng-container *ngIf="onEdit">
-    <div class="d-lg-flex half">
-        <div class="bg order-1 order-md-2 image pr-2"></div>
-        <div class="contents order-2 order-md-1">
-
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-md-7">
-                        <h3>Edit your profile in <strong>CoffeeShop</strong></h3>
-                        <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.
-                        </p>
-                        <form #form="ngForm" method="post" (ngSubmit)="onEditUser(form)">
-                            <div class="form-group first">
-                                <label for="username" class="mb-2 h5">Username</label>
-                                <input type="text" class="form-control mb-2" ngModel="{{user?.username}}" id="username"
-                                    name="username" #username="ngModel" required minlength="4" maxlength="10">
-                            </div>
-                            <ng-container *ngIf="username.touched">
-                                <p class="alert alert-danger text-dark h6" *ngIf="username.errors?.['required']">
-                                    <strong>Error!</strong> Username is required!</p>
-                                <p class="alert alert-danger text-dark h6" *ngIf="username.errors?.['maxlength']">
-                                    <strong>Error!</strong> You cannot add more than 10 characters!</p>
-                                <p class="alert alert-danger text-dark h6" *ngIf="username.errors?.['minlength']">
-                                    <strong>Error!</strong> You should have at least 4 characters!</p>
-                            </ng-container>
-                            <div class="form-group first">
-                                <label for="email" class="mb-2 h5">Email</label>
-                                <input type="text" class="form-control mb-2" ngModel="{{user?.email}}" id="email"
-                                    name="email" #email="ngModel" required
-                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                            </div>
-                            <ng-container *ngIf="email.touched">
-                                <p class="alert alert-danger text-dark h6" *ngIf="email.errors?.['required']">
-                                    <strong>Error!</strong> Email is required!</p>
-                                <p class="alert alert-danger text-dark h6" *ngIf="email.errors?.['pattern']">
-                                    <strong>Error!</strong> Email must be valid!</p>
-                            </ng-container>
-                            <div class="form-group last mb-3">
-                                <label for="avatarImg" class="mb-2 h5">Avatar</label>
-                                <input type="text" class="form-control mb-2" ngModel="{{user?.avatarImg}}"
-                                    id="avatarImg" name="avatarImg" #avatarImg="ngModel" required
-                                    pattern="^https?://.+">
-                            </div>
-                            <ng-container *ngIf="avatarImg.touched">
-                                <p class="alert alert-danger text-dark h6" *ngIf="avatarImg.errors?.['required']">
-                                    <strong>Error!</strong> Avatar is required!</p>
-                                <p class="alert alert-danger text-dark h6" *ngIf="avatarImg.errors?.['pattern']">
-                                    <strong>Error!</strong> You must give valid URL!</p>
-                            </ng-container>
-                            <input type="submit" value="Edit" class="btn btn-block btn-primary">
-                        </form>
-                    </div>
-                </div>
-            </div>
+  <div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2 image pr-2"></div>
+    <div class="contents order-2 order-md-1">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7">
+            <h3>Edit your profile in <strong>CoffeeShop</strong></h3>
+            <p class="mb-4">
+              Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur
+              adipisicing.
+            </p>
+            <form #form="ngForm" method="post" (ngSubmit)="onEditUser(form)">
+              <div class="form-group first">
+                <label for="username" class="mb-2 h5">Username</label>
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  ngModel="{{ user?.username }}"
+                  id="username"
+                  name="username"
+                  #username="ngModel"
+                  required
+                  minlength="4"
+                  maxlength="10"
+                />
+              </div>
+              <ng-container *ngIf="username.touched">
+                <p
+                  class="alert alert-danger text-dark h6"
+                  *ngIf="username.errors?.['required']"
+                >
+                  <strong>Error!</strong> Username is required!
+                </p>
+                <p
+                  class="alert alert-danger text-dark h6"
+                  *ngIf="username.errors?.['maxlength']"
+                >
+                  <strong>Error!</strong> You cannot add more than 10
+                  characters!
+                </p>
+                <p
+                  class="alert alert-danger text-dark h6"
+                  *ngIf="username.errors?.['minlength']"
+                >
+                  <strong>Error!</strong> You should have at least 4 characters!
+                </p>
+              </ng-container>
+              <div class="form-group first">
+                <label for="email" class="mb-2 h5">Email</label>
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  ngModel="{{ user?.email }}"
+                  id="email"
+                  name="email"
+                  #email="ngModel"
+                  required
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                />
+              </div>
+              <ng-container *ngIf="email.touched">
+                <p
+                  class="alert alert-danger text-dark h6"
+                  *ngIf="email.errors?.['required']"
+                >
+                  <strong>Error!</strong> Email is required!
+                </p>
+                <p
+                  class="alert alert-danger text-dark h6"
+                  *ngIf="email.errors?.['pattern']"
+                >
+                  <strong>Error!</strong> Email must be valid!
+                </p>
+              </ng-container>
+              <div class="form-group last mb-3">
+                <label for="avatarImg" class="mb-2 h5">Avatar</label>
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  ngModel="{{ user?.avatarImg }}"
+                  id="avatarImg"
+                  name="avatarImg"
+                  #avatarImg="ngModel"
+                  required
+                  pattern="^https?://.+"
+                />
+              </div>
+              <ng-container *ngIf="avatarImg.touched">
+                <p
+                  class="alert alert-danger text-dark h6"
+                  *ngIf="avatarImg.errors?.['required']"
+                >
+                  <strong>Error!</strong> Avatar is required!
+                </p>
+                <p
+                  class="alert alert-danger text-dark h6"
+                  *ngIf="avatarImg.errors?.['pattern']"
+                >
+                  <strong>Error!</strong> You must give valid URL!
+                </p>
+              </ng-container>
+              <input
+                type="submit"
+                value="Edit"
+                class="btn btn-block btn-primary"
+              />
+            </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </ng-container>

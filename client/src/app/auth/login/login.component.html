@@ -1,33 +1,56 @@
 <div class="d-lg-flex half">
-    <div class="bg order-1 order-md-2 image pr-2"></div>
-    <div class="contents order-2 order-md-1">
-
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-7">
-                    <h3>Login to <strong>CoffeeShop</strong></h3>
-                    <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
-                    <form #form="ngForm" (ngSubmit)="login(form)" method="post">
-                        <div class="form-group first">
-                            <label for="email" class="mb-2 h5">Email</label>
-                            <input type="text" class="form-control mb-2" placeholder="your-email@gmail.com" name="email"
-                                ngModel #email="ngModel">
-                        </div>
-                        <div class="form-group last mb-3">
-                            <label for="password" class="mb-2 h5">Password</label>
-                            <input type="password" class="form-control mb-2" placeholder="Your Password" name="password"
-                                ngModel #password="ngModel">
-                        </div>
-                        <ng-container *ngIf="errors">
-                            <p class="alert alert-danger text-dark h6"><strong>Error!</strong> {{errors}}</p>
-                        </ng-container>
-                        <div class="d-flex mb-4 align-items-center">
-                            <span>Don't have an account yet? <a href="/register"> Register now!</a></span>
-                        </div>
-                        <input type="submit" value="Log In" class="btn btn-block btn-primary">
-                    </form>
-                </div>
+  <div class="bg order-1 order-md-2 image pr-2"></div>
+  <div class="contents order-2 order-md-1">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-7">
+          <h3>Login to <strong>CoffeeShop</strong></h3>
+          <p class="mb-4">
+            Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur
+            adipisicing.
+          </p>
+          <form #form="ngForm" (ngSubmit)="login(form)" method="post">
+            <div class="form-group first">
+              <label for="email" class="mb-2 h5">Email</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                placeholder="your-email@gmail.com"
+                name="email"
+                ngModel
+                #email="ngModel"
+              />
             </div>
+            <div class="form-group last mb-3">
+              <label for="password" class="mb-2 h5">Password</label>
+              <input
+                type="password"
+                class="form-control mb-2"
+                placeholder="Your Password"
+                name="password"
+                ngModel
+                #password="ngModel"
+              />
+            </div>
+            <ng-container *ngIf="errors">
+              <p class="alert alert-danger text-dark h6">
+                <strong>Error!</strong> {{ errors }}
+              </p>
+            </ng-container>
+            <div class="d-flex mb-4 align-items-center">
+              <span
+                >Don't have an account yet?
+                <a href="/register"> Register now!</a></span
+              >
+            </div>
+            <input
+              type="submit"
+              value="Log In"
+              class="btn btn-block btn-primary"
+            />
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 </div>
